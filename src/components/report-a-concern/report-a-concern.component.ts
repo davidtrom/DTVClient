@@ -6,9 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./report-a-concern.component.css']
 })
 export class ReportAConcernComponent implements OnInit {
+  title : string = "Report A Concern | Downtown Wilmington";
 
   constructor() {
-    let title : string = "Report A Concern | Downtown Wilmington";
    }
 
   ngOnInit() {
