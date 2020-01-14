@@ -6,14 +6,17 @@ import { AppComponent } from './app.component';
 import { ReportAConcernComponent } from '../components/report-a-concern/report-a-concern.component';
 import { ReportedConcernsDisplayComponent } from '../components/reported-concerns-display/reported-concerns-display.component';
 import { CommunicationService } from './services/communication.service';
-import { RegisterUserComponent } from './register-user/register-user.component';
+import { RegisterUserComponent } from '../components/register-user/register-user.component';
+import { LoginComponent } from '../components/login/login.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     ReportAConcernComponent,
     ReportedConcernsDisplayComponent,
-    RegisterUserComponent
+    RegisterUserComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

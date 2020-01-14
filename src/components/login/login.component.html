@@ -1,0 +1,28 @@
+
+<div class="container" style="text-align:center; ">
+    <div class="box" style="margin-top: 100px; width: 370px; display:inline-block; ">
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" style=" text-align:left; ">
+          <label for="loginInputEmail1">Email address</label>
+          <input type="email" formControlName = "email" class="form-control" id="inputEmail1" aria-describedby="emailHelp" required placeholder="Enter email" style="width:250px;">
+          <small id="emailHelp" class="form-text text-muted" style="color:#fff;">We'll never share your email with anyone else.</small>
+          
+          <div class="form-group">
+          <label for="loginInputPassword">Password</label>
+          <input type="password" formControlName = "password" class="form-control" id="inputPassword1" required placeholder="Password" style="width:250px;">
+          </div>
+          <div *ngIf="invalidLogin" class="alert alert-danger"> 
+              *The username or password you have entered is invalid!
+              </div> 
+  
+          <button type="submit" class="btn btn-primary">Submit</button>
+          
+          <br>
+          <br>
+          Don't have an account?<br>
+          <a class="btn btn-primary" routerLink="/register" role="button">Register</a>
+      </form>
+  
+    </div>
+  </div>
+  
+  
