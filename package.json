@@ -11,7 +11,7 @@
   },
   "private": true,
   "dependencies": {
-    "@angular-devkit/build-angular": "^0.803.21",
+    "@angular-devkit/build-angular": "^0.803.22",
     "@angular/animations": "~8.1.2",
     "@angular/common": "~8.1.2",
     "@angular/compiler": "~8.1.2",
@@ -25,11 +25,10 @@
     "popper.js": "^1.16.0",
     "rxjs": "^6.5.4",
     "tslib": "^1.9.0",
-    "typescript": "^3.4.5",
     "zone.js": "~0.9.1"
   },
   "devDependencies": {
-    "@angular/cli": "^8.3.21",
+    "@angular/cli": "^8.3.22",
     "@angular/compiler-cli": "~8.1.2",
     "@angular/language-service": "~8.1.2",
     "@types/jasmine": "~3.3.8",
@@ -45,6 +44,7 @@
     "karma-jasmine-html-reporter": "^1.5.1",
     "protractor": "~5.4.0",
     "ts-node": "~7.0.0",
-    "tslint": "~5.15.0"
+    "tslint": "~5.15.0",
+    "typescript": "~3.4.5"
   }
 }
