@@ -3,11 +3,13 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ReportAConcernComponent } from '../components/report-a-concern/report-a-concern.component';
-import { ReportedConcernsDisplayComponent } from '../components/reported-concerns-display/reported-concerns-display.component';
+import { ReportAConcernComponent } from './clientView/components/report-a-concern/report-a-concern.component';
+import { ReportedConcernsDisplayComponent } from './clientView/components/reported-concerns-display/reported-concerns-display.component';
 import { CommunicationService } from './services/communication.service';
-import { RegisterUserComponent } from '../components/register-user/register-user.component';
-import { LoginComponent } from '../components/login/login.component';
+import { RegisterUserComponent } from './clientView/components/register-user/register-user.component';
+import { LoginComponent } from './adminView/components/login/login.component';
+import { FooterComponent } from './clientView/layout/footer/footer.component';
+import { HomeViewComponent } from './clientView/home-view/home-view.component';
 
 
 @NgModule({
@@ -16,7 +18,9 @@ import { LoginComponent } from '../components/login/login.component';
     ReportAConcernComponent,
     ReportedConcernsDisplayComponent,
     RegisterUserComponent,
-    LoginComponent
+    LoginComponent,
+    FooterComponent,
+    HomeViewComponent
   ],
   imports: [
     BrowserModule,
