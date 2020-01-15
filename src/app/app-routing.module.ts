@@ -8,7 +8,7 @@ import { HomeViewComponent } from './clientView/home-view/home-view.component';
 const routes: Routes = [
   { path: '', component: HomeViewComponent},
   { path: 'login', component: LoginComponent},
-  { path: 'register', component: RegisterUserComponent },
+  { path: 'register', component: RegisterUserComponent}
   
 ];
 
