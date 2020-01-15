@@ -9,6 +9,9 @@ import { RegisterUserComponent } from './clientView/components/register-user/reg
 import { LoginComponent } from './adminView/components/login/login.component';
 import { FooterComponent } from './clientView/layout/footer/footer.component';
 import { HomeViewComponent } from './clientView/home-view/home-view.component';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { UserService } from './services/user.service';
+
 
 
 @NgModule({
@@ -20,13 +23,16 @@ import { HomeViewComponent } from './clientView/home-view/home-view.component';
     LoginComponent,
     FooterComponent,
     HomeViewComponent
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
-  providers: [],
+  providers: [UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

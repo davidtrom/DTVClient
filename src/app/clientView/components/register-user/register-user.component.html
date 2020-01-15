@@ -1,4 +1,4 @@
-<!-- <div class="container" style="text-align:center; ">
+<div class="container" style="text-align:center; ">
     <div class="box" style="margin-top: 100px; width: 370px; display:inline-block; ">
       <form [formGroup]="createUserForm" (ngSubmit)="onSubmit()">
   
@@ -7,14 +7,14 @@
             <label for="inputFirstName">First Name:</label>
             <input type="text" formControlName = "firstName"  class="form-control" id="firstName" required placeholder="First">
             <div *ngIf="firstName.errors?.pattern">First name not valid</div>
-            <div *ngIf="firstName.errors?.required">First name required</div> 
+            <div *ngIf="firstName.errors?.required">*First name required</div> 
           </div>
           
           <div class="form-group col-md-6">
             <label for="inputLastName">Last Name:</label>
             <input type="text" formControlName = "lastName" class="form-control" id="lastName" required placeholder="Last">
             <div *ngIf="lastName.errors?.pattern">Last name not valid</div> 
-            <div *ngIf="firstName.errors?.required">First name required</div>
+            <div *ngIf="firstName.errors?.required">*Last name required</div>
           </div>
         </div>  
         
@@ -23,12 +23,11 @@
               <label for="inputEmail4">Email:</label>
               <input type="email" formControlName = "email"  class="form-control" id="email" required placeholder="Email">
               <div *ngIf="email.errors?.email">Enter a valid email address</div>
-              <div *ngIf="email.errors?.required">Email address required</div>
+              <div *ngIf="email.errors?.required">*Email address required</div>
             </div>
             <div *ngIf="emailAlreadyTaken" class="alert alert-danger"> 
               *This username already exists!
             </div>
-       -->
             
             <!--
             <div class="form-group col-md-6">
@@ -37,29 +36,27 @@
               <div *ngIf="password.errors?.required">Password required</div>
               <div *ngIf="password.errors?.pattern">Password needs lowercase, uppercase, number, and symbol: 8 characters minimum</div> 
             </div>
+             -->
+
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="inputWebsite">Website:</label>
+            <input type="text" formControlName = "website"  class="form-control" id="website" placeholder="Website">
+            <!-- <div *ngIf="website.errors?.pattern">Website not valid</div>  -->
           </div>
-      
-          <div class="form-row">
-            <div class="form-group col-md-6">
-              <label for="inputRent">Monthly Rent:</label>
-              <input type="number" formControlName = "rent" class="form-control" id="rent" required placeholder="1250.00">
-            </div>
-            <div class="form-group col-md-6">
-              <label for="inputSalary">Annual Salary:</label>
-              <input type="number" formControlName = "salary" class="form-control" id="salary" required placeholder="57000.00">
-            </div>
           
-          -->
-        <!-- </div>
+          <div class="form-group col-md-6">
+            <label for="inputBusinessWebsite">Business Website:</label>
+            <input type="text" formControlName = "businessWebsite" class="form-control" id="businessWebsite" placeholder="Business Website">
+            <!-- <div *ngIf="businessWebsite.errors?.pattern">Business Website not valid</div>  -->
+          </div>
+        </div>  
       
         <div class="form-group col-md-6">
-          <button type="submit" class="btn btn-primary" [disabled]="!createUserForm.valid">Create Account</button>
+          <button type="submit" class="btn btn-primary" [disabled]="!createUserForm.valid">Receive Updates</button>
         </div>
-<<<<<<< HEAD:src/components/register-user/register-user.component.html
-      
-  </div>
-=======
       </form>
     </div>
-  </div> -->
->>>>>>> ba365c65299498aed0299da0f0f1a8197ef3cd65:src/app/clientView/components/register-user/register-user.component.html
+</div>

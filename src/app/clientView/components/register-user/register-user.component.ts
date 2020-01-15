@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormGroup, FormControl, Validators, FormBuilder} from '@angular/forms';
+import {FormGroup, FormControl, Validators} from '@angular/forms';
 import { Router } from '@angular/router';
 import { User } from 'src/app/models/User';
 import { UserService } from 'src/app/services/user.service';
@@ -33,7 +33,9 @@ export class RegisterUserComponent implements OnInit {
         firstName: new FormControl('', [Validators.required, Validators.pattern('^[a-zA-Z]+$')]),
         lastName: new FormControl('', [Validators.required, Validators.pattern('^[a-zA-Z]+$')]),
         email: new FormControl('', [Validators.required,  Validators.email]),
-        password: new FormControl('', [Validators.required, Validators.pattern('^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!_.@$%^&*-]).{8,}$')])
+        website: new FormControl(''),
+        businessWebsite: new FormControl('')
+        //password: new FormControl('', [Validators.required, Validators.pattern('^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!_.@$%^&*-]).{8,}$')])
   });
   }
 
@@ -53,38 +55,48 @@ export class RegisterUserComponent implements OnInit {
     return this.createUserForm.get('email');
   } 
 
-  get password() {
-    return this.createUserForm.get('password');
+  get website() {
+    return this.createUserForm.get('website');
   } 
+
+  get businessWebsite() {
+    return this.createUserForm.get('businessWebsite');
+  } 
+
+  // get password() {
+  //   return this.createUserForm.get('password');
+  // } 
 
   onSubmit() {
     
-    // this.userEmail = this.createUserForm.controls.email.value;
-    // console.log(this.userEmail);
-    // this.userService.checkEmailAvailability(this.userEmail).subscribe(data => {
-    //   console.log("taken: ", data);
-    //   if(data){
-    //     this.emailAlreadyTaken = false;
-    //     let user: User = new User (
-    //       null,
-    //       this.createUserForm.controls.firstName.value,
-    //       this.createUserForm.controls.lastName.value,
-    //       this.createUserForm.controls.email.value,
-    //       this.createUserForm.controls.password.value,
-    //       );
+     this.userEmail = this.createUserForm.controls.email.value;
+     console.log(this.userEmail);
+    this.userService.checkEmailAvailability(this.userEmail).subscribe(data => {
+      console.log("taken: ", data);
+      if(data){
+        this.emailAlreadyTaken = false;
+        let user: User = new User (
+          null,
+          this.createUserForm.controls.firstName.value,
+          this.createUserForm.controls.lastName.value,
+          this.createUserForm.controls.email.value,
+          this.createUserForm.controls.website.value,
+          this.createUserForm.controls.businessWebsite.value,
+          null
+          );
       
-    //     this.createAccountService.addUser(user)
-    //       .subscribe(data => {
-    //         this.user = data;
-    //         this.userService.updateCurrentUser(this.user);
-    //         this.revert();
-    //         this.router.navigate(['/investments']);
-    //         }
-    //       );
-    //   } else {
-    //       this.emailAlreadyTaken = true;
-    //   }
-    // });
+        this.userService.addUser(user)
+          .subscribe(data => {
+            this.user = data;
+            this.userService.updateCurrentUser(this.user);
+            this.revert();
+            this.router.navigate(['/register']);
+            }
+          );
+      } else {
+          this.emailAlreadyTaken = true;
+      }
+    });
   }
 
 }
