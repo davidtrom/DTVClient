@@ -10,6 +10,8 @@ import { RegisterUserComponent } from './clientView/components/register-user/reg
 import { LoginComponent } from './adminView/components/login/login.component';
 import { FooterComponent } from './clientView/layout/footer/footer.component';
 import { HomeViewComponent } from './clientView/home-view/home-view.component';
+import { HeaderComponent } from './clientView/layout/header/header.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -20,11 +22,13 @@ import { HomeViewComponent } from './clientView/home-view/home-view.component';
     RegisterUserComponent,
     LoginComponent,
     FooterComponent,
-    HomeViewComponent
+    HomeViewComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgbModule
   ],
   providers: [CommunicationService],
   bootstrap: [AppComponent]
