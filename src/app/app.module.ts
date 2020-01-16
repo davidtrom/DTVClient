@@ -10,11 +10,10 @@ import { LoginComponent } from './adminView/components/login/login.component';
 import { FooterComponent } from './clientView/layout/footer/footer.component';
 import { HeaderComponent } from './clientView/layout/header/header.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { RequestAmbassadorComponent } from './clientView/components/request-ambassador/request-ambassador.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { UserService } from './services/user.service';
 import { AdminRegisterComponent } from './adminView/components/admin-register/admin-register.component';
-
-
 
 @NgModule({
   declarations: [
@@ -25,7 +24,8 @@ import { AdminRegisterComponent } from './adminView/components/admin-register/ad
     LoginComponent,
     FooterComponent,
     HeaderComponent,
-    AdminRegisterComponent
+    AdminRegisterComponent,
+    RequestAmbassadorComponent
   ],
   imports: [
     BrowserModule,
