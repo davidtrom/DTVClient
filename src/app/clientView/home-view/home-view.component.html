@@ -1,6 +1,13 @@
-
 <app-header></app-header>
-hello client view
-<router-outlet name="clientView"></router-outlet>
-
+Client view
+<div class="container">
+    <div class="row"></div>
+    <router-outlet name="clientView"></router-outlet>
+    <div class="col text-center">
+        <app-report-a-concern></app-report-a-concern>
+    </div>
+    <div class="col text-center">
+        <app-request-ambassador></app-request-ambassador>
+    </div>
+</div>
 <app-footer></app-footer>

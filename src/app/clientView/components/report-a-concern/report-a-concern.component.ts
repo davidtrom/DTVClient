@@ -8,10 +8,15 @@ import { Component, OnInit } from '@angular/core';
 export class ReportAConcernComponent implements OnInit {
   title : string = "Report A Concern | Downtown Wilmington";
 
-  constructor() {
-   }
+  newReportFormIsCollapsed: boolean = true;
+  constructor() { }
 
   ngOnInit() {
   }
+
+  displayReportForm() {
+    this.newReportFormIsCollapsed = !this.newReportFormIsCollapsed;
+  }
+ 
 
 }
