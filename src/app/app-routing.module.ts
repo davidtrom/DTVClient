@@ -7,7 +7,7 @@ import { ReportAConcernComponent } from './clientView/components/report-a-concer
 
 
 const routes: Routes = [
-  { path: 'login', component: LoginComponent},
+  { path: 'admin/login', component: LoginComponent},
   { path: 'register', component: RegisterUserComponent},
   { path: 'reports-display', component: ReportedConcernsDisplayComponent},
   { path: 'create-report', component: ReportAConcernComponent}
