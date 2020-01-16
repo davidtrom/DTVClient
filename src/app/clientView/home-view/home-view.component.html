@@ -1,11 +1,14 @@
-
 <app-header></app-header>
 hello client view
-<router-outlet name="clientView"></router-outlet>
-<div class="form-actions">
-
-<button type="button" class="btn btn-primary btn-lg">Report a Concern</button>
-<button type="button" class="btn btn-primary btn-lg">Request an Ambassador</button>
-
+<div class="container">
+    <div class="row"></div>
+    <router-outlet name="clientView"></router-outlet>
+    <div class="col text-center">
+        <button type="button" class="btn btn-primary btn-lg">Report a Concern</button>
+        <!--<report-a-concern></report-a-concern> -->
+    </div>
+    <div class="col text-center">
+        <button type="button" class="btn btn-primary btn-lg">Request an Ambassador</button>
+    </div>
 </div>
 <app-footer></app-footer>
