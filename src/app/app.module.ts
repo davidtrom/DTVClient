@@ -13,6 +13,7 @@ import { HeaderComponent } from './clientView/layout/header/header.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { UserService } from './services/user.service';
+import { AmbassadorRequestComponent } from './clientView/components/ambassador-request/ambassador-request.component';
 
 
 
@@ -25,7 +26,8 @@ import { UserService } from './services/user.service';
     LoginComponent,
     FooterComponent,
     HomeViewComponent,
-    HeaderComponent
+    HeaderComponent,
+    AmbassadorRequestComponent
   ],
   imports: [
     BrowserModule,
