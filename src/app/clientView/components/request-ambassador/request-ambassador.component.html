@@ -1,6 +1,7 @@
 <button type="button" class="btn btn-primary btn-lg" (click)="displayRequestForm()">Request an Ambassador</button>
 
 <form *ngIf="!newRequestFormIsCollapsed">
+
     <div class="form-group">
       <label for="fullname">Full Name</label>
       <input class="form-control" id="fullname" placeholder="Enter your full name">
@@ -9,17 +10,23 @@
     <div class="form-group">
         <label for="email">Email address</label>
         <input class="form-control" id="email" placeholder="Enter email">
-      </div>
+    </div>
   
     <div class="form-group">
-      <label for="origin">Origin Location</label>
-      <input class="form-control" id="origin" placeholder="Current location">
+        <label for="phone">Phone number</label>
+        <input class="form-control" id="phone" placeholder="Enter phone number">
+    </div>
+
+    <div class="form-group">
+      <label for="origin">Origin</label>
+      <input class="form-control" id="origin" placeholder="Enter current location">
     </div>
     
     <div class="form-group">
       <label for="destination">Destination</label>
-      <input class="form-control" id="destination" placeholder="Drop off location...">
+      <input class="form-control" id="destination" placeholder="Enter drop off location...">
     </div>
     
     <button type="submit" class="btn btn-info">Submit</button>
+
   </form>
