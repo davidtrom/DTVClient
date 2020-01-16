@@ -12,6 +12,7 @@ import { FooterComponent } from './clientView/layout/footer/footer.component';
 import { HomeViewComponent } from './clientView/home-view/home-view.component';
 import { HeaderComponent } from './clientView/layout/header/header.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { RequestAmbassadorComponent } from './clienView/components/request-ambassador/request-ambassador.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     LoginComponent,
     FooterComponent,
     HomeViewComponent,
-    HeaderComponent
+    HeaderComponent,
+    RequestAmbassadorComponent
   ],
   imports: [
     BrowserModule,
