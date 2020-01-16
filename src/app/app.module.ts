@@ -14,7 +14,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RequestAmbassadorComponent } from './clientView/components/request-ambassador/request-ambassador.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { UserService } from './services/user.service';
-import { AmbassadorRequestComponent } from './clientView/components/ambassador-request/ambassador-request.component';
+
 
 @NgModule({
   declarations: [
@@ -27,7 +27,7 @@ import { AmbassadorRequestComponent } from './clientView/components/ambassador-r
     HomeViewComponent,
     HeaderComponent,
     RequestAmbassadorComponent,
-    AmbassadorRequestComponent
+    
   ],
   imports: [
     BrowserModule,
