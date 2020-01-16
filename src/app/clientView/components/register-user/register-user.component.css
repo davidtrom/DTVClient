@@ -1,0 +1,11 @@
+.responsive {
+    
+    width: 150px;
+    height: 150px;
+    /* height: auto; */
+  }
+#imageContainer{
+    padding-top: 50px;
+    width:100%;
+    text-align: center;
+}
