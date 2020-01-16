@@ -1,9 +1,9 @@
 <div id = "imageContainer">
     <img src="../../../../assets/images/DTVMainStLogo.png" alt="Logo" class="responsive">
-  </div>
+</div>
   
   <div class="container" style="text-align:center; ">
-      <div class="box" style="margin-top: 100px; width: 370px; display:inline-block; ">
+      <div class="box" style="margin-top: 15px; width: 370px; display:inline-block; ">
         <form [formGroup]="createUserForm" (ngSubmit)="onSubmit()">
     
           <div class="form-row">
@@ -34,7 +34,7 @@
           </div>
   
           <div class="form-group">
-            <label for="address">Pick Up Address</label>
+            <label for="originAddress">Pick Up Address</label>
             <input type="text" class="form-control is-invalid" id="address" placeholder="Your current address" required>
             <div class="valid-feedback">
               Looks good!
@@ -45,7 +45,7 @@
           </div>
 
           <div class="form-group">
-            <label for="address">Drop Off Address</label>
+            <label for="destinationAddress">Drop Off Address</label>
             <input type="text" class="form-control is-invalid" id="address" placeholder="Drop Off address" required>
             <div class="valid-feedback">
               Looks good!
