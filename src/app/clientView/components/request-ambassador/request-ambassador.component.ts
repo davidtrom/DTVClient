@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RequestAmbassadorComponent implements OnInit {
   newRequestFormIsCollapsed: boolean = true;
+  
   constructor() { }
 
   ngOnInit() {
