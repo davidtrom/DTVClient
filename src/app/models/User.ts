@@ -6,13 +6,17 @@ export class User {
       firstName : string;
       lastName : string;
       email : string;
+      website : string;
+      businessWebsite : string;
       password: string;
   
-      constructor(id:number, firstName:string, lastname:string, email:string, password:string){
+      constructor(id:number, firstName:string, lastname:string, email:string, website: string, businessWebsite: string, password:string){
           this.id = id;
           this.firstName = firstName;
           this.lastName = lastname;
           this.email = email;
+          this.website = website;
+          this.businessWebsite = businessWebsite;
           this.password = password;
       }
   
