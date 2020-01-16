@@ -34,9 +34,12 @@
               Please give an address.
             </div>
           </div>
+
+          <label for="textarea1">Your Description</label>
+<textarea class="form-control" id="textarea1" rows="3" placeholder="Write a short description of your concern..."></textarea>
         
           <div class="form-group col-md-6">
-            <button type="submit" class="btn btn-primary" [disabled]="!createUserForm.valid">Receive Updates</button>
+            <button type="submit" class="btn btn-primary" [disabled]="!createUserForm.valid">Send Report</button>
           </div>
         </form>
       </div>
