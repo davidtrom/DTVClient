@@ -52,11 +52,10 @@ export class ReportAConcernComponent implements OnInit {
   onSubmit(){
     console.log("inside submit")
     let workOrder: WorkOrder = new WorkOrder(
-      null,
       this.createWorkOrderForm.controls.firstName.value,
       this.createWorkOrderForm.controls.lastName.value,
       this.createWorkOrderForm.controls.description.value,
-      this.createWorkOrderForm.controls.address.value
+      this.createWorkOrderForm.controls.address.value,
     )
     console.log(workOrder);
     this.workOrderService.addReport(workOrder)
