@@ -14,6 +14,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RequestAmbassadorComponent } from './clientView/components/request-ambassador/request-ambassador.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { UserService } from './services/user.service';
+import { WorkOrderService } from './services/work-order.service';
 
 
 @NgModule({
@@ -37,7 +38,7 @@ import { UserService } from './services/user.service';
     ReactiveFormsModule,
     FormsModule
   ],
-  providers: [UserService],
+  providers: [UserService, WorkOrderService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

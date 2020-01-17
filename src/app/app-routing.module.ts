@@ -17,9 +17,6 @@ const routes: Routes = [
   { path: 'create-report', component: ReportAConcernComponent},
   { path: 'ambassador-request', component: RequestAmbassadorComponent},
   
-
-
-  
 ];
 
 @NgModule({
