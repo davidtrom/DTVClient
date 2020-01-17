@@ -6,7 +6,7 @@
   
   <div class="container" style="text-align:left; ">
       <div class="box" style="margin-top: 15px; width: 370px; display:inline-block; ">
-        <form *ngIf="!newReportFormIsCollapsed" [formGroup]="createUserForm" (ngSubmit)="onSubmit()">
+        <form *ngIf="!newReportFormIsCollapsed" [formGroup]="createWorkOrderForm" (ngSubmit)="onSubmit()">
     
           <div class="form-row">
             <div class="form-group col-md-6">
@@ -27,20 +27,23 @@
 
           <div class="form-group">
             <label for="address">Location:</label>
-            <input type="text" class="form-control is-invalid" id="address" placeholder="Address:" required>
-            <div class="valid-feedback">
-              Looks good!
-            </div>
-            <div class="invalid-feedback">
-              Please give an address.
-            </div>
+            <input type="text" formControlName = "address" class="form-control" id="address" required placeholder="Address:">
+            <div *ngIf="address.errors?.required">*Address required</div>
           </div>
 
-          <label for="textarea1">Your Description</label>
-<textarea class="form-control" id="textarea1" rows="3" placeholder="Write a short description of your concern..."></textarea>
+          <div>
+            <label for="textarea1">Description of your Concern:</label>    
+            <textarea class="form-control" formControlName = "description" id="description" rows="3" placeholder="Write a short description of your concern..."></textarea>
+            <div *ngIf="description.errors?.required">*Description required</div>
+          </div>
         
-          <div class="form-group col-md-6">
-            <button type="submit" class="btn btn-primary" [disabled]="!createUserForm.valid">Send Report</button>
+
+          <div id = "buttonContainer" class="form-group col-sm-6">
+            <button type="submit" class="btn btn-primary" [disabled]="!createWorkOrderForm.valid">Send Report</button>
+          </div>
+
+          <div id = "buttonContainer" class="form-group col-sm-6">
+            <button type="submit" class="btn btn-primary" (click)="cancel()">Cancel</button>
           </div>
         </form>
       </div>
