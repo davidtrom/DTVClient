@@ -1,6 +1,6 @@
 <div class="container">
-    <h1><b>User Login</b></h1>
-    <hr style="margin: 0 15%; border-top-color: #18d26e;">
+    <h1><b>Administrative Login</b></h1>
+    <hr style="margin: 0 15%; border-top-color: #0AA59D;">
 
     <form #it="ngForm" (ngSubmit)="loginForm()">
 
@@ -11,9 +11,13 @@
         </div>
         <div class="form-group">
             <label>Password</label>
-            <!-- type password being stupid -->
-            <input type="text" type="" name="password" class="form-control" [(ngModel)]="login.password" 
+            <input type="text" type="password" name="password" class="form-control" [(ngModel)]="login.password" 
                     #password="ngModel" required>
+        </div>
+        <!--Checks if status is 401 meaning username or password is wrong -->
+        <!--TO DO: validate other response status -->
+        <div *ngIf="status==401" class="alert alert-danger">
+                Username or Password are incorrect
         </div>
         <button type="submit" class="btn" [disabled]="!it.form.valid">Log in</button>
 
