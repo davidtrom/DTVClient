@@ -13,6 +13,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RequestAmbassadorComponent } from './clientView/components/request-ambassador/request-ambassador.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { UserService } from './services/user.service';
+import { WorkOrderService } from './services/work-order.service';
 import { AdminRegisterComponent } from './adminView/components/admin-register/admin-register.component';
 import { HttpInterceptorService } from './services/http-interceptor.service';
 import { LiveFeedComponent } from './adminView/components/live-feed/live-feed.component';
@@ -42,8 +43,9 @@ import { LiveFeedComponent } from './adminView/components/live-feed/live-feed.co
     ReactiveFormsModule,
     FormsModule
   ],
+
   providers: [
-    UserService,
+    UserService, WorkOrderService,
     { provide: HTTP_INTERCEPTORS, useClass:HttpInterceptorService, multi:true }
   ],
   bootstrap: [AppComponent]
