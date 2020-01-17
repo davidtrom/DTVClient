@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ReportAConcernComponent } from './clientView/components/report-a-concern/report-a-concern.component';
@@ -15,6 +15,10 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { UserService } from './services/user.service';
 import { WorkOrderService } from './services/work-order.service';
 import { AdminRegisterComponent } from './adminView/components/admin-register/admin-register.component';
+import { HttpInterceptorService } from './services/http-interceptor.service';
+import { LiveFeedComponent } from './adminView/components/live-feed/live-feed.component';
+
+
 
 
 @NgModule({
@@ -28,7 +32,8 @@ import { AdminRegisterComponent } from './adminView/components/admin-register/ad
     HeaderComponent,
     RequestAmbassadorComponent,
     AdminRegisterComponent,
-    RequestAmbassadorComponent
+    RequestAmbassadorComponent,
+    LiveFeedComponent,
   ],
   imports: [
     BrowserModule,
@@ -38,7 +43,11 @@ import { AdminRegisterComponent } from './adminView/components/admin-register/ad
     ReactiveFormsModule,
     FormsModule
   ],
-  providers: [UserService, WorkOrderService],
+
+  providers: [
+    UserService, WorkOrderService,
+    { provide: HTTP_INTERCEPTORS, useClass:HttpInterceptorService, multi:true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
