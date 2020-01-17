@@ -15,6 +15,8 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { UserService } from './services/user.service';
 import { AdminRegisterComponent } from './adminView/components/admin-register/admin-register.component';
 
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,7 +27,7 @@ import { AdminRegisterComponent } from './adminView/components/admin-register/ad
     FooterComponent,
     HeaderComponent,
     AdminRegisterComponent,
-    RequestAmbassadorComponent
+    RequestAmbassadorComponent,
   ],
   imports: [
     BrowserModule,
