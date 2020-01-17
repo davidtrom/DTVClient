@@ -6,6 +6,9 @@ import { ReportedConcernsDisplayComponent } from './clientView/components/report
 import { ReportAConcernComponent } from './clientView/components/report-a-concern/report-a-concern.component';
 import { AdminRegisterComponent } from './adminView/components/admin-register/admin-register.component';
 import { LiveFeedComponent } from './adminView/components/live-feed/live-feed.component';
+import { RequestAmbassadorComponent } from './clientView/components/request-ambassador/request-ambassador.component';
+
+
 
 const routes: Routes = [
   { path: 'admin/login', component: LoginComponent},
@@ -14,7 +17,8 @@ const routes: Routes = [
   { path: 'register', component: RegisterUserComponent},
   { path: 'reports-display', component: ReportedConcernsDisplayComponent},
   { path: 'create-report', component: ReportAConcernComponent},
-
+  { path: 'ambassador-request', component: RequestAmbassadorComponent},
+  
 ];
 
 @NgModule({
