@@ -14,6 +14,7 @@ import { RequestAmbassadorComponent } from './clientView/components/request-amba
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { UserService } from './services/user.service';
 import { AdminRegisterComponent } from './adminView/components/admin-register/admin-register.component';
+import { ClientHomeComponent } from './components/client-home/client-home.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { AdminRegisterComponent } from './adminView/components/admin-register/ad
     HeaderComponent,
     RequestAmbassadorComponent,
     AdminRegisterComponent,
-    RequestAmbassadorComponent
+    RequestAmbassadorComponent,
+    ClientHomeComponent
   ],
   imports: [
     BrowserModule,

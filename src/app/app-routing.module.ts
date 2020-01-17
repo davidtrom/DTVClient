@@ -5,6 +5,7 @@ import { LoginComponent } from 'src/app/adminView/components/login/login.compone
 import { ReportedConcernsDisplayComponent } from './clientView/components/reported-concerns-display/reported-concerns-display.component';
 import { ReportAConcernComponent } from './clientView/components/report-a-concern/report-a-concern.component';
 import { RequestAmbassadorComponent } from './clientView/components/request-ambassador/request-ambassador.component';
+import { AppComponent } from './app.component';
 
 
 
