@@ -19,6 +19,7 @@ import { LiveFeedComponent } from './adminView/components/live-feed/live-feed.co
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,6 +29,7 @@ import { LiveFeedComponent } from './adminView/components/live-feed/live-feed.co
     LoginComponent,
     FooterComponent,
     HeaderComponent,
+    RequestAmbassadorComponent,
     AdminRegisterComponent,
     RequestAmbassadorComponent,
     LiveFeedComponent,
