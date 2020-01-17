@@ -16,3 +16,7 @@
 .btn:hover{
     color: #18d26e;
 }
+
+form{
+    padding-top: 20px;
+}
