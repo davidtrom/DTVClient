@@ -7,11 +7,12 @@ import { ReportAConcernComponent } from './clientView/components/report-a-concer
 import { AdminRegisterComponent } from './adminView/components/admin-register/admin-register.component';
 import { LiveFeedComponent } from './adminView/components/live-feed/live-feed.component';
 import { RequestAmbassadorComponent } from './clientView/components/request-ambassador/request-ambassador.component';
-import { AppComponent } from './app.component';
+import { ClientHomeComponent } from './clientView/components/client-home/client-home.component';
 
 
 
 const routes: Routes = [
+  { path: '', component: ClientHomeComponent },
   { path: 'admin/login', component: LoginComponent},
   { path: 'admin/register', component: AdminRegisterComponent},
   { path: 'admin/logged-in', component: LiveFeedComponent},
