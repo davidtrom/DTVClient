@@ -13,7 +13,7 @@ export class WorkOrderService {
   @Inject(apiUrl)
   private apiUrl : string;
   addReportUrl: string = apiUrl + "/work-orders/create";
-  
+
 
   httpOptions = {
     headers: new HttpHeaders({'Content-Type' : 'application/json'})
@@ -27,9 +27,9 @@ export class WorkOrderService {
       .pipe(tap(data => console.log(data)), catchError(this.handleError<WorkOrder>('add Work Order', null)));  
   }
 
-  displayAllWorkOrders() : Observable<WorkOrder[]>{
-    console.log("inside display work oders")
-  }
+  // displayAllWorkOrders() : Observable<WorkOrder[]>{
+  //   console.log("inside display work oders");
+  // }
 
 
 
