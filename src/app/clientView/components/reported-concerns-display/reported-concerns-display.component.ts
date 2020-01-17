@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { WorkOrderService } from 'src/app/services/work-order.service';
 
 @Component({
   selector: 'app-reported-concerns-display',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ReportedConcernsDisplayComponent implements OnInit {
 
-  constructor() { }
+  constructor(private workOrderService: WorkOrderService) { }
 
   ngOnInit() {
   }
