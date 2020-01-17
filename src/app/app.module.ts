@@ -15,9 +15,9 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { UserService } from './services/user.service';
 import { WorkOrderService } from './services/work-order.service';
 import { AdminRegisterComponent } from './adminView/components/admin-register/admin-register.component';
+import { ClientHomeComponent } from './components/client-home/client-home.component';
 import { HttpInterceptorService } from './services/http-interceptor.service';
 import { LiveFeedComponent } from './adminView/components/live-feed/live-feed.component';
-
 
 
 
@@ -33,6 +33,7 @@ import { LiveFeedComponent } from './adminView/components/live-feed/live-feed.co
     RequestAmbassadorComponent,
     AdminRegisterComponent,
     RequestAmbassadorComponent,
+    ClientHomeComponent
     LiveFeedComponent,
   ],
   imports: [

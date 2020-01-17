@@ -1,64 +1,59 @@
-<div>
-  <button type="button" class="btn btn-primary btn-lg" (click)="displayRequestForm()">Request an Ambassador</button>
-</div>
 
-<!-- <div id = "imageContainer">
-    <img src="../../../../assets/images/DTVMainStLogo.png" alt="Logo" class="responsive">
+<button type="button" class="btn btn-primary btn-lg" (click)="displayRequestForm()">Request an Ambassador</button>
+
+
+<!-- <div id="imageContainer">
+  <img src="../../../../assets/images/DTVMainStLogo.png" alt="Logo" class="responsive">
 </div> -->
-  
-  <div class="container" style="text-align:left; ">
-      <div class="box" style="margin-top: 15px; width: 370px; display:inline-block; ">
-        <form *ngIf="!newRequestFormIsCollapsed" [formGroup]="createUserForm" (ngSubmit)="onSubmit()">
-    
-          <div class="form-row">
-            <div class="form-group col-md-6">
-              <label for="inputFirstName">First Name:</label>
-              <input type="text" formControlName = "firstName"  class="form-control" id="firstName" required placeholder="First">
-              <div *ngIf="firstName.errors?.pattern">First name not valid</div>
-              <div *ngIf="firstName.errors?.required">*First name required</div> 
-            </div>
-            
-            <div class="form-group col-md-6">
-              <label for="inputLastName">Last Name:</label>
-              <input type="text" formControlName = "lastName" class="form-control" id="lastName" required placeholder="Last">
-              <div *ngIf="lastName.errors?.pattern">Last name not valid</div> 
-              <div *ngIf="firstName.errors?.required">*Last name required</div>
-            </div>
-          </div>  
-          
-          <div class="form-group">
-            <label for="telephone">Telephone*</label>
-            <input type="text" class="form-control is-invalid" id="telephone" placeholder="Your telephone number" required minlength="7" maxlength="12">
-            <div *ngIf="telephone.errors?.required">*A valid telephone number with area code is required.</div>
-          </div>
-  
-          <div class="form-group">
-            <label for="originAddress">Pick Up Address</label>
-            <input type="text" class="form-control is-invalid" id="originAddress" placeholder="Your current address" required>
-            <div class="valid-feedback">
-              Looks good!
-            </div>
-            <div class="invalid-feedback">
-              Please add an address.
-            </div>
-          </div>
 
-          <div class="form-group">
-            <label for="destinationAddress">Drop Off Address</label>
-            <input type="text" class="form-control is-invalid" id="destinationAddress" placeholder="Drop Off address" required>
-            <div class="invalid-feedback">
-              Please add an address.
-            </div>
-          </div>
-        
-          <div class="form-group col-sm-6">
-            <button type="submit" class="btn btn-primary" [disabled]="!createUserForm.valid">Submit Request</button>
-          </div>
+<div class="container" style="text-align:left;">
+  <div class="box" style="margin-top: 15px; width: 370px; display:inline-block;">
 
-          <div id = "buttonContainer" class="form-group col-sm-6">
-            <button type="submit" class="btn btn-primary" (click)="cancel()">Cancel</button>
-          </div>
+    <form [formGroup]="createAmbassadorRequestForm" (ngSubmit)="onSubmit()">
 
-        </form>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="inputFirstName">First Name*</label>
+          <input type="text" formControlName="firstName" class="form-control" id="firstName" required
+            placeholder="First name">
+          <div *ngIf="firstName.errors?.pattern">First name not valid</div>
+          <div *ngIf="firstName.errors?.required">*First name required</div>
+        </div>
+
+        <div class="form-group col-md-6">
+          <label for="inputLastName">Last Name*</label>
+          <input type="text" formControlName="lastName" class="form-control" id="lastName" required 
+          placeholder="Last name">
+          <div *ngIf="lastName.errors?.pattern">Last name not valid</div>
+          <div *ngIf="firstName.errors?.required">*Last name required</div>
+        </div>
       </div>
+
+      <div class="form-group">
+        <label for="telephone">Telephone*</label>
+        <input type="text" formControlName="phoneNumber" class="form-control" id="phoneNumber" required 
+        placeholder="Telephone number" required minlength="7" maxlength="12">
+        <div *ngIf="phoneNumber.errors?.required">*Phone number required</div>
+      </div>
+
+      <div class="form-group">
+        <label for="origin">Pick Up Location</label>
+        <input type="text" formControlName="pickUpAddress" class="form-control" id="pickUpAddress" required placeholder="Pick Up address" required>
+        <div *ngIf="pickUpAddress.errors?.required">*Pick up location required</div>
+      </div>
+
+      <div class="form-group">
+        <label for="destination">Drop Off Location</label>
+        <input type="text" formControlName="dropOffAddress" class="form-control" id="dropOffAddress" required placeholder="Drop Off address" required>
+        <div *ngIf="dropOffAddress.errors?.required">*Drop off location required</div>
+      </div>
+
+      <div class="form-group col-md-6">
+        <button type="submit" class="btn btn-primary" [disabled]="!createUserForm.valid">Submit Request</button>
+      </div>
+      <div id = "buttonContainer" class="form-group col-sm-6">
+        <button type="submit" class="btn btn-primary" (click)="cancel()">Cancel</button>
+      </div>
+    </form>
   </div>
+</div>

@@ -7,6 +7,7 @@ import { ReportAConcernComponent } from './clientView/components/report-a-concer
 import { AdminRegisterComponent } from './adminView/components/admin-register/admin-register.component';
 import { LiveFeedComponent } from './adminView/components/live-feed/live-feed.component';
 import { RequestAmbassadorComponent } from './clientView/components/request-ambassador/request-ambassador.component';
+import { AppComponent } from './app.component';
 
 
 
@@ -17,7 +18,7 @@ const routes: Routes = [
   { path: 'register', component: RegisterUserComponent},
   { path: 'reports-display', component: ReportedConcernsDisplayComponent},
   { path: 'create-report', component: ReportAConcernComponent},
-  { path: 'ambassador-request', component: RequestAmbassadorComponent},
+  { path: 'request-ambassador', component: RequestAmbassadorComponent},
   
 ];
 
