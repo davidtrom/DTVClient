@@ -13,3 +13,11 @@
 #buttonContainer{
   padding-top: 7px;
 }
+.btn {
+  text-align: center;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  overflow: hidden;
+  background-color: #0aa59d;
+  border-color: #0aa59d;
+}
