@@ -13,7 +13,7 @@ const routes: Routes = [
   { path: 'register', component: RegisterUserComponent},
   { path: 'reports-display', component: ReportedConcernsDisplayComponent},
   { path: 'create-report', component: ReportAConcernComponent},
-  { path: 'ambassador-request', component: RequestAmbassadorComponent},
+  { path: 'request-ambassador', component: RequestAmbassadorComponent},
   
 
 

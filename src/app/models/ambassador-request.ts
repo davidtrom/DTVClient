@@ -1,20 +1,19 @@
 export class AmbassadorRequest {
-    requestId: number;
     firstName: string;
     lastName: string;
+    phoneNumber: string;
     pickUpLocation: string;
     dropOffLocation: string;
-    phoneNumber: string;
-    email: string;
+    // email: string;
+    date: Date;
+    ambassadorId: number
 
-    constructor(requestId: number, firstName: string, lastName: string, pickUpLocation: string,
-        dropOffLocation: string, phoneNumber: string, email: string) {
-        this.requestId = requestId;
+    constructor(firstName: string, lastName: string, phoneNumber: string, pickUpLocation: string,
+        dropOffLocation: string) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.pickUpLocation = pickUpLocation;
         this.dropOffLocation = dropOffLocation;
         this.phoneNumber = phoneNumber;
-        this.email = email;
     }
 }
