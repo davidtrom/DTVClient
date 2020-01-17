@@ -8,12 +8,12 @@ import { ReportedConcernsDisplayComponent } from './clientView/components/report
 import { RegisterUserComponent } from './clientView/components/register-user/register-user.component';
 import { LoginComponent } from './adminView/components/login/login.component';
 import { FooterComponent } from './clientView/layout/footer/footer.component';
-import { HomeViewComponent } from './clientView/home-view/home-view.component';
 import { HeaderComponent } from './clientView/layout/header/header.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RequestAmbassadorComponent } from './clientView/components/request-ambassador/request-ambassador.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { UserService } from './services/user.service';
+import { AdminRegisterComponent } from './adminView/components/admin-register/admin-register.component';
 
 
 @NgModule({
@@ -24,10 +24,10 @@ import { UserService } from './services/user.service';
     RegisterUserComponent,
     LoginComponent,
     FooterComponent,
-    HomeViewComponent,
     HeaderComponent,
     RequestAmbassadorComponent,
-    
+    AdminRegisterComponent,
+    RequestAmbassadorComponent
   ],
   imports: [
     BrowserModule,
