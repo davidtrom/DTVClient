@@ -13,6 +13,7 @@ export class WorkOrderService {
   @Inject(apiUrl)
   private apiUrl : string;
   addReportUrl: string = apiUrl + "/work-orders/create";
+  getAllReportsUrl: string = apiUrl + "/work-orders"
 
 
   httpOptions = {
@@ -27,11 +28,13 @@ export class WorkOrderService {
       .pipe(tap(data => console.log(data)), catchError(this.handleError<WorkOrder>('add Work Order', null)));  
   }
 
-  // displayAllWorkOrders() : Observable<WorkOrder[]>{
-  //   console.log("inside display work oders");
-  // }
-
-
+  
+  getAllWorkOrders() : Observable<WorkOrder[]>{
+    console.log("inside display work oders");
+    return this.http.get<WorkOrder[]>(this.getAllReportsUrl, this.httpOptions)
+      .pipe(tap(data => console.log('fetch work orders', data)),
+      catchError(this.handleError<WorkOrder[]>('get Work Orders', null)));
+  }
 
 /**
    * Handle Http operation that failed.
