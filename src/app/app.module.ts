@@ -18,6 +18,7 @@ import { AdminRegisterComponent } from './adminView/components/admin-register/ad
 import { ClientHomeComponent } from './clientView/components/client-home/client-home.component';
 import { HttpInterceptorService } from './services/http-interceptor.service';
 import { LiveFeedComponent } from './adminView/components/live-feed/live-feed.component';
+import { RequestAmbassadorDisplayComponent } from './clientView/components/request-ambassador-display/request-ambassador-display.component';
 
 
 @NgModule({
@@ -34,6 +35,7 @@ import { LiveFeedComponent } from './adminView/components/live-feed/live-feed.co
     RequestAmbassadorComponent,
     ClientHomeComponent,
     LiveFeedComponent,
+    RequestAmbassadorDisplayComponent,
   ],
   imports: [
     BrowserModule,
