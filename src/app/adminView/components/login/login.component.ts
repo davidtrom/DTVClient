@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
   loginForm(){
     this.authenticate.authenticate(this.login.username, this.login.password)
                     .subscribe( 
-                      (result) => this.router.navigate(['admin/logged-in']),
+                      (result) => this.router.navigate(['admin/logged-in']), 
                       (res : HttpErrorResponse) => this.status = res.status
                       
 
