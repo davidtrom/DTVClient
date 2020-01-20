@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AmbassadorRequest } from 'src/app/models/AmbassadorRequest';
+import { AmbassadorRequest } from 'src/app/models/ambassadorRequest';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AmbassadorRequestService } from 'src/app/services/ambassador-request.service';
 import { Router } from '@angular/router';
