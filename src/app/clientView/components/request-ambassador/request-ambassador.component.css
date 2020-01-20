@@ -6,21 +6,7 @@
     background-color: #0aa59d;
     border-color: #0aa59d;
 }
-label{
-    text-align: left;
-
-}
 
 .form-row {
-    /* padding-bottom: 0px;
-    margin-top: 0px;
-    padding-top: 0px;
-    padding-left: 0px; */
-    height: 75px;
-    width: 100%;
+    text-align: left;
 }
-.form-group {
-    width: 50%;
-}
-
-
