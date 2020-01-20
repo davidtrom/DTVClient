@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { WebsocketService } from 'src/app/services/websocket.service';
 import { WorkOrder } from 'src/app/models/WorkOrder';
-import { AmbassadorRequest } from 'src/app/models/ambassador-request';
+import { AmbassadorRequest } from 'src/app/models/ambassadorRequest';
 
 
 @Component({

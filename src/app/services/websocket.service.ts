@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import * as SockJS from 'sockjs-client';
 import * as Stomp from 'stompjs';
 import { environment } from 'src/environments/environment';
-import { AmbassadorRequest } from '../models/ambassador-request';
+import { AmbassadorRequest } from '../models/AmbassadorRequest';
 import { WorkOrder } from '../models/WorkOrder';
 
 
