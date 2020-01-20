@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { WebsocketService } from 'src/app/services/websocket.service';
 import { WorkOrder } from 'src/app/models/WorkOrder';
-import { AmbassadorRequest } from 'src/app/models/ambassadorRequest';
-
-
+import { AmbassadorRequest } from 'src/app/models/AmbassadorRequest';
 @Component({
   selector: 'app-live-feed',
   templateUrl: './live-feed.component.html',
@@ -14,16 +12,11 @@ export class LiveFeedComponent implements OnInit {
   request : AmbassadorRequest[];
   workorder_Destination: string = '/topic';
   stompClient = null;
-
   constructor(
     private webSocket : WebsocketService
-
   ) {}
-
   ngOnInit() {
-
   }
-
   connect(){
     this.stompClient = this.webSocket.getStompClient();
     this.stompClient.connect(this.webSocket.username,this.webSocket.password, frame => {
@@ -32,13 +25,10 @@ export class LiveFeedComponent implements OnInit {
       });
     });
   }
-
   disconnect(){
     if(this.stompClient !== null){
       this.stompClient.connect();
     }
     console.log("Disconnected");
   }
-
-
 }
