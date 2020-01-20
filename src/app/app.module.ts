@@ -18,6 +18,9 @@ import { AdminRegisterComponent } from './adminView/components/admin-register/ad
 import { ClientHomeComponent } from './clientView/components/client-home/client-home.component';
 import { HttpInterceptorService } from './services/http-interceptor.service';
 import { LiveFeedComponent } from './adminView/components/live-feed/live-feed.component';
+import { WebsocketService } from './services/websocket.service';
+
+
 
 
 
@@ -46,7 +49,7 @@ import { LiveFeedComponent } from './adminView/components/live-feed/live-feed.co
   ],
 
   providers: [
-    UserService, WorkOrderService,
+    UserService, WorkOrderService, WebsocketService,
     { provide: HTTP_INTERCEPTORS, useClass:HttpInterceptorService, multi:true }
   ],
   bootstrap: [AppComponent]

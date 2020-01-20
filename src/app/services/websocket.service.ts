@@ -1,41 +1,36 @@
 import { Injectable } from '@angular/core';
-import * as Rx from 'rxjs/Rx';
-import { webSocket } from 'rxjs/webSocket';
+import * as SockJS from 'sockjs-client';
+import * as Stomp from 'stompjs';
+import { environment } from 'src/environments/environment';
+import { AmbassadorRequest } from '../models/ambassador-request';
+import { WorkOrder } from '../models/WorkOrder';
+
 
 @Injectable()
 export class WebsocketService {
+  webSocketEndPoint: string = 'http://localhost:8080/socket';
+  topic: string = '/topic/forms';
+  stompClient: any;
+  username: string;
+  password: string;
+
+
 
   constructor() { }
 
-  private subject: Rx.Subject<MessageEvent>;
 
-  public connect(url): Rx.Subject<MessageEvent> {
-    if(!this.subject) {
-      this.subject = this.create(url);
-      console.log("Successfully Connect: " + url);
-    }
-    return this.subject;
+
+  getStompClient() {
+    const socket = new SockJS(this.webSocketEndPoint);
+    this.stompClient = Stomp.over(socket);
+    return this.stompClient;
   }
 
-  private create(url): Rx.Subject<MessageEvent> {
-    let ws = new WebSocket(url);
+  sendRequest(dest: String, request: AmbassadorRequest) {
+    this.stompClient.send(dest, {}, JSON.stringify(request));
+  }
 
-    let observable = Rx.Observable.create(
-      (obs: Rx.Observer<MessageEvent>) => {
-        ws.onmessage = obs.next.bind(obs);
-        ws.onerror = obs.error.bind(obs);
-        ws.onclose = obs.complete.bind(obs);
-        return ws.close.bind(ws);
-      }
-    )
-
-    let observer = {
-      next: (data: Object) => {
-        if(ws.readyState === WebSocket.OPEN) {
-          ws.send(JSON.stringify(data));
-        }
-      }
-    }
-    return Rx.Subject.create(observer, observable)
+  sendWorkOrder(dest: String, workOrder: WorkOrder) {
+    this.stompClient.send(dest, {}, JSON.stringify(workOrder));
   }
 }
