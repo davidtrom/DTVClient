@@ -19,7 +19,7 @@ export class AdminRegisterComponent implements OnInit {
   ngOnInit() {
   }
   adminRegister(){
-    this.register.registerAdmin(this.adminUser).subscribe(data => this.router.navigate(['/admin/login']));
+    this.register.registerAdmin(this.adminUser).subscribe(data => this.router.navigate(['admin/login']));
     console.log(this.adminUser);
   }
 
