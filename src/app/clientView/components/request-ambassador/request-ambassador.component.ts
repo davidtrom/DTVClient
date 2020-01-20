@@ -72,6 +72,7 @@ export class RequestAmbassadorComponent implements OnInit {
   }
 
   cancel() {
-    this.router.navigate(['']);
+    event.preventDefault();
+    this.newRequestFormIsCollapsed = true;
   }
 }
