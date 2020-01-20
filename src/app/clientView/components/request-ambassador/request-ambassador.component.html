@@ -1,23 +1,18 @@
 <button type="button" class="btn btn-primary btn-lg" (click)="displayRequestForm()">Request an Ambassador</button>
 
-<!-- <div id="imageContainer">
-  <img src="../../../../assets/images/DTVMainStLogo.png" alt="Logo" class="responsive">
-</div> -->
-
-<div class="container-fluid" style="text-align:center;">
+<div class="container-fluid">
 
   <form *ngIf="!newRequestFormIsCollapsed" [formGroup]="createAmbassadorRequestForm" (ngSubmit)="onSubmit()">
     <!-- <div class="box" style="margin-top: 15px; width: 100%; display:inline-block;"> -->
-      <div class="form-row" style="text-align:left; display: inline-block; width: 100%;">
-        <div class="form-group col-xs-12 col-md-6" style="width: 50%">
+      <div class="form-row" style="text-align:left; margin-right: 5px">
+        <div class="form-group col-xs-12 col-md-6">
           <label for="inputFirstName">First Name</label>
           <input type="text" formControlName="firstName" class="form-control" id="firstName" required
             placeholder="First name">
           <div *ngIf="firstName.errors?.pattern">First name not valid</div>
           <div *ngIf="firstName.errors?.required">*First name required</div>
         </div>
-
-        <div class="form-group col-xs-12 col-md-6" style="width: 50%">
+        <div class="form-group col-xs-12 col-md-6">
           <label for="inputLastName">Last Name</label>
           <input type="text" formControlName="lastName" class="form-control" id="lastName" required
             placeholder="Last name">
