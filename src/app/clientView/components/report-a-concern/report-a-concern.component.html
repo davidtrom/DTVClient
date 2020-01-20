@@ -1,50 +1,39 @@
 <button type="button" class="btn btn-primary btn-lg" (click)="displayReportForm()">Report a Concern</button>
 
-<!-- <div id = "imageContainer">
-    <img src="../../../../assets/images/DTVMainStLogo.png" alt="Logo" class="responsive">
-</div> -->
-  
-  <div class="container" style="text-align:left; ">
-      <div class="box" style="margin-top: 15px; width: 370px; display:inline-block; ">
-        <form *ngIf="!newReportFormIsCollapsed" [formGroup]="createWorkOrderForm" (ngSubmit)="onSubmit()">
-    
-          <div class="form-row">
-            <div class="form-group col-md-6">
-              <label for="inputFirstName">First Name:</label>
-              <input type="text" formControlName = "firstName"  class="form-control" id="firstName" required placeholder="First">
-              <div *ngIf="firstName.errors?.pattern">First name not valid</div>
-              <div *ngIf="firstName.errors?.required">*First name required</div> 
-            </div>
-            
-            <div class="form-group col-md-6">
-              <label for="inputLastName">Last Name:</label>
-              <input type="text" formControlName = "lastName" class="form-control" id="lastName" required placeholder="Last">
-              <div *ngIf="lastName.errors?.pattern">Last name not valid</div> 
-              <div *ngIf="firstName.errors?.required">*Last name required</div>
-            </div>
-          </div>  
-          
-
-          <div class="form-group">
-            <label for="address">Location:</label>
-            <input type="text" formControlName = "address" class="form-control" id="address" required placeholder="Address:">
-            <div *ngIf="address.errors?.required">*Address required</div>
-          </div>
-
-          <div>
-            <label for="textarea1">Description of your Concern:</label>    
-            <textarea class="form-control" formControlName = "description" id="description" rows="3" placeholder="Write a short description of your concern..."></textarea>
-            <div *ngIf="description.errors?.required">*Description required</div>
-          </div>
-        
-
-          <div id = "buttonContainer" class="form-group col-sm-6">
-            <button type="submit" class="btn btn-primary" [disabled]="!createWorkOrderForm.valid">Send Report</button>
-          </div>
-
-          <div id = "buttonContainer" class="form-group col-sm-6">
-            <button type="submit" class="btn btn-primary" (click)="cancel()">Cancel</button>
-          </div>
-        </form>
+<div class="container-fluid">
+  <form *ngIf="!newReportFormIsCollapsed" [formGroup]="createWorkOrderForm" (ngSubmit)="onSubmit()">
+    <div class="form-row">
+      <div class="col form-group">
+        <input type="text" formControlName="firstName" class="form-control" id="firstName" required
+          placeholder="First name">
+        <div *ngIf="firstName.errors?.pattern">First name not valid</div>
+        <div *ngIf="firstName.errors?.required">*First name required</div>
       </div>
-  </div>
+      <div class="col form-group">
+        <input type="text" formControlName="lastName" class="form-control" id="lastName" required
+          placeholder="Last name">
+        <div *ngIf="lastName.errors?.pattern">Last name not valid</div>
+        <div *ngIf="firstName.errors?.required">*Last name required</div>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-12">
+        <input type="text" formControlName="address" class="form-control" id="address" required placeholder="Address">
+        <div *ngIf="address.errors?.required">*Address required</div>
+      </div>
+      <div class="form-group col-12">
+        <textarea class="form-control" formControlName="description" id="description" rows="3"
+          placeholder="Write a short description of your concern..."></textarea>
+        <div *ngIf="description.errors?.required">*Description required</div>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-sm-6">
+        <button type="submit" class="btn btn-primary" [disabled]="!createWorkOrderForm.valid">Send Report</button>
+      </div>
+      <div class="col-sm-6">
+        <button type = "submit" class = "btn btn-primary" (click)="cancel()">Cancel</button>
+      </div>
+    </div>
+  </form>
+</div>

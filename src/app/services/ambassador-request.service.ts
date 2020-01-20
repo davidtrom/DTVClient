@@ -1,7 +1,7 @@
 import { Injectable, Inject } from '@angular/core';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { apiUrl } from './user.service';
-import { AmbassadorRequest } from '../models/AmbassadorRequest';
+import { AmbassadorRequest } from '../models/ambassador-request';
 import { Observable, of } from 'rxjs';
 import { tap, catchError } from 'rxjs/operators';
 
@@ -12,7 +12,8 @@ export class AmbassadorRequestService {
 
   @Inject(apiUrl)
   private apiUrl : string;
-  addRequestUrl: string = apiUrl + "/ambassador-requests/create";
+  addRequestUrl: string = apiUrl + "/ambassador-requests/request";
+  getAllReportsUrl: string = apiUrl + "/ambassador-requests"
 
   httpOptions = {
     headers: new HttpHeaders({'Content-Type' : 'application/json'})
@@ -21,9 +22,9 @@ export class AmbassadorRequestService {
   constructor(private http: HttpClient) { }
 
   addAmbassadorRequest(ambassadorRequest: AmbassadorRequest): Observable<AmbassadorRequest>{
-    console.log("inside add report", this.addRequestUrl);
-    return this.http.post<AmbassadorRequest>(this.addRequestUrl, AmbassadorRequest, this.httpOptions)
-      .pipe(tap(data => console.log(data)), catchError(this.handleError<AmbassadorRequest>('add Work Order', null)));  
+    console.log("inside add request", this.addRequestUrl);
+    return this.http.post<AmbassadorRequest>(this.addRequestUrl, ambassadorRequest, this.httpOptions)
+      .pipe(tap(data => console.log(data)), catchError(this.handleError<AmbassadorRequest>('add Ambassador Request', null)));  
   }
 
   /**
