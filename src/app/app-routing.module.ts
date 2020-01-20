@@ -20,6 +20,7 @@ const routes: Routes = [
   { path: 'reports-display', component: ReportedConcernsDisplayComponent},
   { path: 'create-report', component: ReportAConcernComponent},
   { path: 'request-ambassador', component: RequestAmbassadorComponent},
+  { path: 'client-home', component: ClientHomeComponent}
   
 ];
 

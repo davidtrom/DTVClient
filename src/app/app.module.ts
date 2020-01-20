@@ -19,8 +19,7 @@ import { ClientHomeComponent } from './clientView/components/client-home/client-
 import { HttpInterceptorService } from './services/http-interceptor.service';
 import { LiveFeedComponent } from './adminView/components/live-feed/live-feed.component';
 import { WebsocketService } from './services/websocket.service';
-
-
+import { RequestAmbassadorDisplayComponent } from './clientView/components/request-ambassador-display/request-ambassador-display.component';
 
 
 
@@ -38,6 +37,7 @@ import { WebsocketService } from './services/websocket.service';
     RequestAmbassadorComponent,
     ClientHomeComponent,
     LiveFeedComponent,
+    RequestAmbassadorDisplayComponent,
   ],
   imports: [
     BrowserModule,

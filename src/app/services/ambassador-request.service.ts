@@ -1,7 +1,7 @@
 import { Injectable, Inject } from '@angular/core';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { apiUrl } from './user.service';
-import { AmbassadorRequest } from '../models/ambassador-request';
+import { AmbassadorRequest } from '../models/AmbassadorRequest';
 import { Observable, of } from 'rxjs';
 import { tap, catchError } from 'rxjs/operators';
 

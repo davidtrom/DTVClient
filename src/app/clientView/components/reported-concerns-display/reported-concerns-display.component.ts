@@ -7,10 +7,19 @@ import { WorkOrderService } from 'src/app/services/work-order.service';
   styleUrls: ['./reported-concerns-display.component.css']
 })
 export class ReportedConcernsDisplayComponent implements OnInit {
+  workOrders: any = [];
 
-  constructor(private workOrderService: WorkOrderService) { }
+  constructor(private workOrderService: WorkOrderService) {
+    this.getWorkOrders();
+   }
 
   ngOnInit() {
+  }
+
+  getWorkOrders() {
+    this.workOrderService.getAllWorkOrders().subscribe(data => {this.workOrders = data});
+    console.log(this.workOrders);
+    
   }
 
 }
