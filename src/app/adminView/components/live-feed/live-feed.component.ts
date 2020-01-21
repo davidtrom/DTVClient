@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { WebsocketService } from 'src/app/services/websocket.service';
 import { WorkOrder } from 'src/app/models/WorkOrder';
-import { AmbassadorRequest } from 'src/app/models/ambassadorRequest';
+import { AmbassadorRequest } from '../../../models/AmbassadorRequest';
 
 
 @Component({
@@ -26,7 +26,7 @@ export class LiveFeedComponent implements OnInit {
 
   connect(){
     this.stompClient = this.webSocket.getStompClient();
-    this.stompClient.connect(this.webSocket.username,this.webSocket.password, frame => {
+    this.stompClient.connect({}, frame => {
       this.stompClient.subscribe(this.workorder_Destination, ouput => {
         this.workOrders.push(JSON.parse(ouput.body));
       });
