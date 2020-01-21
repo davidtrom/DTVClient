@@ -73,13 +73,7 @@ export class ReportAConcernComponent implements OnInit {
 
 
   displayReportForm() {
-    if(this.createWorkOrderForm.controls.firstName.value != ""){
-      this.onSubmit;
-    }
-    else{
     this.newReportFormIsCollapsed = !this.newReportFormIsCollapsed;
-    }
   }
- 
-
 }
+
