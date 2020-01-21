@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { WebsocketService } from 'src/app/services/websocket.service';
 import { WorkOrder } from 'src/app/models/WorkOrder';
-import { AmbassadorRequest } from 'src/app/models/AmbassadorRequest';
+import { AmbassadorRequest } from 'src/app/models/ambassador-request';
 @Component({
   selector: 'app-live-feed',
   templateUrl: './live-feed.component.html',
