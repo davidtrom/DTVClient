@@ -54,11 +54,14 @@ export class RequestAmbassadorComponent implements OnInit {
   onSubmit() {
     console.log("inside submit")
     let ambassadorRequest: AmbassadorRequest = new AmbassadorRequest(
+      null,
       this.createAmbassadorRequestForm.controls.firstName.value,
       this.createAmbassadorRequestForm.controls.lastName.value,
       this.createAmbassadorRequestForm.controls.phoneNumber.value,
       this.createAmbassadorRequestForm.controls.pickUpAddress.value,
-      this.createAmbassadorRequestForm.controls.dropOffAddress.value
+      this.createAmbassadorRequestForm.controls.dropOffAddress.value,
+      null,
+      null
     )
     console.log(ambassadorRequest);
     this.ambassadorRequestService.addAmbassadorRequest(ambassadorRequest)
@@ -72,6 +75,7 @@ export class RequestAmbassadorComponent implements OnInit {
   }
 
   cancel() {
-    this.router.navigate(['']);
+    event.preventDefault();
+    this.newRequestFormIsCollapsed = true;
   }
 }

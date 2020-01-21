@@ -50,6 +50,7 @@ export class ReportAConcernComponent implements OnInit {
   } 
 
   onSubmit(){
+
     console.log("inside submit")
     let workOrder: WorkOrder = new WorkOrder(
       this.createWorkOrderForm.controls.firstName.value,
@@ -66,12 +67,18 @@ export class ReportAConcernComponent implements OnInit {
   }
 
   cancel(){
-    this.router.navigate(['']);
+    event.preventDefault();
+    this.newReportFormIsCollapsed = true;
   }
 
 
   displayReportForm() {
+    if(this.createWorkOrderForm.controls.firstName.value != ""){
+      this.onSubmit;
+    }
+    else{
     this.newReportFormIsCollapsed = !this.newReportFormIsCollapsed;
+    }
   }
  
 

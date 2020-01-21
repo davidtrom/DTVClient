@@ -14,16 +14,11 @@ export class LiveFeedComponent implements OnInit {
   request : AmbassadorRequest[];
   workorder_Destination: string = '/topic';
   stompClient = null;
-
   constructor(
     private webSocket : WebsocketService
-
   ) {}
-
   ngOnInit() {
-
   }
-
   connect(){
     this.stompClient = this.webSocket.getStompClient();
     this.stompClient.connect(this.webSocket.username,this.webSocket.password, frame => {
@@ -32,13 +27,10 @@ export class LiveFeedComponent implements OnInit {
       });
     });
   }
-
   disconnect(){
     if(this.stompClient !== null){
       this.stompClient.connect();
     }
     console.log("Disconnected");
   }
-
-
 }
