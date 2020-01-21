@@ -57,6 +57,8 @@ export class ReportAConcernComponent implements OnInit {
       this.createWorkOrderForm.controls.lastName.value,
       this.createWorkOrderForm.controls.description.value,
       this.createWorkOrderForm.controls.address.value,
+      null,
+      null
     )
     console.log(workOrder);
     this.workOrderService.addReport(workOrder)
