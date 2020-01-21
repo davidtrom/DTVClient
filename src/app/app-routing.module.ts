@@ -8,6 +8,7 @@ import { AdminRegisterComponent } from './adminView/components/admin-register/ad
 import { LiveFeedComponent } from './adminView/components/live-feed/live-feed.component';
 import { RequestAmbassadorComponent } from './clientView/components/request-ambassador/request-ambassador.component';
 import { ClientHomeComponent } from './clientView/components/client-home/client-home.component';
+import { RequestAmbassadorDisplayComponent } from './clientView/components/request-ambassador-display/request-ambassador-display.component';
 
 
 
@@ -20,7 +21,8 @@ const routes: Routes = [
   { path: 'reports-display', component: ReportedConcernsDisplayComponent},
   { path: 'create-report', component: ReportAConcernComponent},
   { path: 'request-ambassador', component: RequestAmbassadorComponent},
-  { path: 'client-home', component: ClientHomeComponent}
+  { path: 'client-home', component: ClientHomeComponent},
+  { path: 'ambassador-requests', component: RequestAmbassadorDisplayComponent},
   
 ];
 

@@ -19,12 +19,17 @@ export class AmbassadorRequestService {
     headers: new HttpHeaders({'Content-Type' : 'application/json'})
   }
 
-  constructor(private http: HttpClient) { }
+  constructor( private http: HttpClient) { }
 
   addAmbassadorRequest(ambassadorRequest: AmbassadorRequest): Observable<AmbassadorRequest>{
     console.log("inside add request", this.addRequestUrl);
     return this.http.post<AmbassadorRequest>(this.addRequestUrl, ambassadorRequest, this.httpOptions)
       .pipe(tap(data => console.log(data)), catchError(this.handleError<AmbassadorRequest>('add Ambassador Request', null)));  
+  }
+
+  getAllRequests() : Observable <AmbassadorRequest[]>{
+    return this.http.get<AmbassadorRequest[]>(this.getAllReportsUrl, this.httpOptions)
+      .pipe(tap(data => console.log(data)), catchError(this.handleError<AmbassadorRequest[]>('fething all requests', null)));
   }
 
   /**
