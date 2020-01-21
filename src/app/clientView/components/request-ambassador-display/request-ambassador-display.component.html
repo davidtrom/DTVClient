@@ -23,8 +23,8 @@
             <td>{{ request.phoneNumber }}</td>
             <td>{{ request.pickUpLocation }}</td>
             <td>{{ request.dropOffLocation}}</td>
-            <td>{{ workOrder.dateCreated | date: 'shortDate'}}</td>
-            <td>{{ workOrder.workOrderStatus}}</td>
+            <td>{{ request.dateCreated | date: 'shortDate'}}</td>
+            <td>{{ request.workOrderStatus}}</td>
         </tr>
       </tbody>
     </table> 
