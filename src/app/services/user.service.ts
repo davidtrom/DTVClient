@@ -44,7 +44,6 @@ export class UserService {
     this.currentUser$.next(user);
   }
 
-
   /**
    * Handle Http operation that failed.
    * Let the app continue.
