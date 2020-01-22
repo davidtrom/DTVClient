@@ -31,13 +31,14 @@ import { WorkOrderStatus } from './WorkOrderStatus';
         dateCreated : Date;
         dateCompleted : Date;
         workOrderStatus : string;
-        selectedFiles : FileList;
+        selectedFileNames : string[];
 
         
-        constructor(firstName:string, lastname:string, description: string, location: string){
+        constructor(firstName:string, lastname:string, description: string, location: string, selectedFileNames: string[]){
             this.firstName = firstName;
             this.lastName = lastname;
             this.description = description;
             this.location = location;
+            this.selectedFileNames = selectedFileNames;
         }
 }

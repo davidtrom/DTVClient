@@ -19,6 +19,7 @@ export class ReportAConcernComponent implements OnInit {
   workOrder: WorkOrder;
   newReportFormIsCollapsed: boolean = true;
   selectedFiles: FileList;
+  selectedFileNames: string[];
   currentFileUpload: File;
   progress: { percentage: number } = { percentage: 0 };
   selectedFile = null;
@@ -39,7 +40,8 @@ export class ReportAConcernComponent implements OnInit {
       firstName: new FormControl('', [Validators.required, Validators.pattern('^[a-zA-Z]+$')]),
       lastName: new FormControl('', [Validators.required, Validators.pattern('^[a-zA-Z]+$')]),
       address: new FormControl('', [Validators.required]),
-      description: new FormControl('', [Validators.required])
+      description: new FormControl('', [Validators.required]),
+      uploadFiles: new FormControl('')
     });
   }
 
@@ -67,6 +69,7 @@ export class ReportAConcernComponent implements OnInit {
       this.createWorkOrderForm.controls.lastName.value,
       this.createWorkOrderForm.controls.description.value,
       this.createWorkOrderForm.controls.address.value,
+      this.workOrder.selectedFileNames = this.getSelectedFileNames()
     )
     console.log(workOrder);
     this.workOrderService.addReport(workOrder)
@@ -104,21 +107,30 @@ export class ReportAConcernComponent implements OnInit {
 
   change(event) {
     this.changeImage = true;
+  }
+
+  changedImage(event) {
+    this.selectedFile = event.target.files[0];
+  }
+
+  upload() {
+    this.progress.percentage = 0;
+    this.currentFileUpload = this.selectedFiles.item(0);
+    this.getSelectedFileNames();
+    this.workOrderService.pushFileToStorage(this.currentFileUpload).subscribe(event => {
+      // this.selectedFiles = undefined;
+    ;});
+  }
+  selectFile(event) {
+    this.selectedFiles = event.target.files;
+
+  }
+
+  getSelectedFileNames(): string[] {
+    for (let i = 0; i < this.selectedFiles.length; i++) {
+     this.selectedFileNames.push(this.selectedFiles[i].name);
     }
-
-    changedImage(event) {
-      this.selectedFile = event.target.files[0];
-      }
-
-      upload() {
-        this.progress.percentage = 0;
-        this.currentFileUpload = this.selectedFiles.item(0);
-        this.workOrderService.pushFileToStorage(this.currentFileUpload).subscribe(event => {
-        this.selectedFiles = undefined;
-        });
-        }
-        selectFile(event) {
-        this.selectedFiles = event.target.files;
-        }
+    return this.selectedFileNames;
+  }
 }
 
