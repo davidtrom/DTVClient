@@ -13,7 +13,9 @@ export class AmbassadorRequestService {
   @Inject(apiUrl)
   private apiUrl : string;
   addRequestUrl: string = apiUrl + "/ambassador-requests/request";
-  getAllReportsUrl: string = apiUrl + "/ambassador-requests"
+  getAllRequestsUrl: string = apiUrl + "/ambassador-requests";
+  getAllClosedRequestsUrl : string = apiUrl + "/ambassador-requests/closed"; 
+  updateStatusUrl: string = apiUrl + "/ambassador-requests/close/";
 
   httpOptions = {
     headers: new HttpHeaders({'Content-Type' : 'application/json'})
@@ -28,8 +30,18 @@ export class AmbassadorRequestService {
   }
 
   getAllRequests() : Observable <AmbassadorRequest[]>{
-    return this.http.get<AmbassadorRequest[]>(this.getAllReportsUrl, this.httpOptions)
+    return this.http.get<AmbassadorRequest[]>(this.getAllRequestsUrl, this.httpOptions)
       .pipe(tap(data => console.log(data)), catchError(this.handleError<AmbassadorRequest[]>('fething all requests', null)));
+  }
+
+  getAllClosedRequests() : Observable <AmbassadorRequest[]>{
+    return this.http.get<AmbassadorRequest[]>(this.getAllClosedRequestsUrl, this.httpOptions)
+      .pipe(tap(data => console.log(data)), catchError(this.handleError<AmbassadorRequest[]>('fething all closed requests', null)));
+  }
+
+  close(id): Observable <AmbassadorRequest> {
+    return this.http.put<AmbassadorRequest>(this.updateStatusUrl + id, this.httpOptions)
+      .pipe(tap(data => console.log(data)), catchError(this.handleError<AmbassadorRequest>('status: closed', null)));
   }
 
   /**
