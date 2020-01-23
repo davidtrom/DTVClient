@@ -77,6 +77,8 @@ export class ReportAConcernComponent implements OnInit {
     this.createWorkOrderForm.reset();
     this.newReportFormIsCollapsed = true;
     //this.router.navigate(['/register']);
+
+    
   }
 
   cancel() {
