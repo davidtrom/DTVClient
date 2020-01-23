@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators, ControlValueAccessor } from '@angular/forms';
+import { FormGroup, FormControl, Validators, FormBuilder, FormArray } from '@angular/forms';
 import { Router } from '@angular/router';
 import { WorkOrder } from 'src/app/models/WorkOrder';
 import { UserService } from 'src/app/services/user.service';
@@ -12,88 +12,91 @@ import { apiUrl } from 'src/app/services/user.service';
   templateUrl: './report-a-concern.component.html',
   styleUrls: ['./report-a-concern.component.css']
 })
-export class ReportAConcernComponent implements OnInit, ControlValueAccessor {
+
+export class ReportAConcernComponent implements OnInit {
 
   title: string = "Report A Concern | Downtown Wilmington";
-  createWorkOrderForm: FormGroup;
+  workOrderForm: FormGroup;
   workOrder: WorkOrder;
+  submittedFiles: FormArray;
   newReportFormIsCollapsed: boolean = true;
   public awsEndpointUrl = "https://dtv-db.s3.amazonaws.com/";
   deleteFileEndpointUrl = apiUrl + "/deleteFile";
   workOrderFiles: string[] = [];
   workOrderFilePathUrls: string[] = [];
-  
 
-  constructor(private workOrderService: WorkOrderService, private router: Router, private http: HttpClient) {
-    this.createWorkOrderForm = this.createFormGroup();
+
+  constructor(private workOrderService: WorkOrderService, private router: Router,
+    private http: HttpClient, private formBuilder: FormBuilder) { }
+
+
+  ngOnInit() { 
+    this.workOrderForm = this.formBuilder.group({
+    firstName: ['', [Validators.required, Validators.pattern('^[a-zA-Z]+$')]],
+    lastName: ['', [Validators.required, Validators.pattern('^[a-zA-Z]+$')]],
+    address: ['', [Validators.required]],
+    description: ['', [Validators.required]],
+    submittedFiles: this.formBuilder.array([this.createFileFormGroup()])
+  });
   }
 
-  ngOnInit() {
+
+
+
+
+addFile(): void {
+  this.submittedFiles = this.workOrderForm.get('submittedFiles') as FormArray;
+  this.submittedFiles.push(this.createFileFormGroup());
+}
+
+createFileFormGroup(): FormGroup {
+  return this.formBuilder.group({
+    newFile: [null]
+  });
+}
+
+
+get firstName() {
+  return this.workOrderForm.get('firstName');
+}
+
+get lastName() {
+  return this.workOrderForm.get('lastName');
+}
+
+get address() {
+  return this.workOrderForm.get('address');
+}
+
+get description() {
+  return this.workOrderForm.get('description');
+}
+
+
+addFilePathUrl(): string[] {
+  console.log(this.submittedFiles);
+  for (var i = 0; i < this.submittedFiles.length; i++) {
+    this.workOrderFilePathUrls[i] = this.submittedFiles[i].name;
   }
-
-  createFormGroup() {
-    return new FormGroup({
-      firstName: new FormControl('', [Validators.required, Validators.pattern('^[a-zA-Z]+$')]),
-      lastName: new FormControl('', [Validators.required, Validators.pattern('^[a-zA-Z]+$')]),
-      address: new FormControl('', [Validators.required]),
-      description: new FormControl('', [Validators.required]),
-      submittedFiles: new FormControl(null)
-    });
-  }
-
-  
-
-  get firstName() {
-    return this.createWorkOrderForm.get('firstName');
-  }
-
-  get lastName() {
-    return this.createWorkOrderForm.get('lastName');
-  }
-
-  get address() {
-    return this.createWorkOrderForm.get('address');
-  }
-
-  get description() {
-    return this.createWorkOrderForm.get('description');
-  }
-
-  getSubmittedFiles(): string[] {
-    console.log(this.submittedFiles);
-    for (var i = 0; i < e.target.files.length; i++) {
-      this.workOrderFiles.push(this.createWorkOrderForm.files[i];
-    } return this.workOrderFiles;
-  }
-
-  addFilePathUrl(): string[] {
-    console.log(e.target.files);
-    for (var i = 0; i < e.target.files.length; i++) {
-      this.workOrderFiles.push(e.target.files[i].name);
-    }
-  } return
-
-// }
-
-
-
+  return this.workOrderFilePathUrls;
+}
 
 onSubmit() {
 
   console.log("inside submit")
   let workOrder: WorkOrder = new WorkOrder(
-    this.createWorkOrderForm.controls.firstName.value,
-    this.createWorkOrderForm.controls.lastName.value,
-    this.createWorkOrderForm.controls.description.value,
-    this.createWorkOrderForm.controls.address.value,
-    this.createWorkOrderForm.controls.submittedFiles.value
+    this.workOrderForm.controls.firstName.value,
+    this.workOrderForm.controls.lastName.value,
+    this.workOrderForm.controls.description.value,
+    this.workOrderForm.controls.address.value,
+    this.workOrderForm.controls.submittedFiles.value
   )
 
   console.log(workOrder);
   this.workOrderService.addReport(workOrder)
     .subscribe(data => { console.log("inside subscribe", data); this.workOrder = data });
-    this.workOrderService.uploadFiles()
-  this.createWorkOrderForm.reset();
+  this.workOrderService.uploadFiles()
+  this.workOrderForm.reset();
   this.newReportFormIsCollapsed = true;
   //this.router.navigate(['/register']);
 }
@@ -108,57 +111,6 @@ displayReportForm() {
   this.newReportFormIsCollapsed = !this.newReportFormIsCollapsed;
 }
 
-
-  // Upload Work Order File Methods:
-
-  // viewFile() {
-  //   window.open(this.awsEndpointUrl + this.file);
-  // }
-
-
-  // deleteFile() {
-  //   this.http.post<string>(this.deleteFileEndpointUrl, this.file).subscribe(
-  //     res => {
-  //       this.file = res;
-  //     }
-  //   );
-  // }
-
-  // change(event) {
-  //   this.changeImage = true;
-  // }
-
-  // changedImage(event) {
-  //   this.selectedFile = event.target.files[0];
-  // }
-
-  // upload() {
-  //   this.progress.percentage = 0;
-  //   this.currentFileUpload = this.selectedFiles.item(0);
-  //   this.getSelectedFileNames();
-  //   this.workOrderService.pushFileToStorage(this.currentFileUpload).subscribe(event => {
-  //     // this.selectedFiles = undefined;
-  //   ;});
-  // }
-  // selectFile(event) {
-  //   this.selectedFiles = event.target.files;
-
-  // }
-
-  // getSelectedFileNames(): string[] {
-  //   for (let i = 0; i < this.selectedFiles.length; i++) {
-  //    this.selectedFileNames.push(this.selectedFiles[i].name);
-  //   }
-  //   return this.selectedFileNames;
-  // }
-
-  
-
-  
-
-  
-
- 
    
 }
 
