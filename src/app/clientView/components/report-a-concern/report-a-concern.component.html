@@ -24,7 +24,7 @@
                 <div *ngIf="description.errors?.required">*Description required</div>
             </div>
             <div class="form-group col-12">
-                <input type="file" multiple formControlName="uploadFiles" class="form-control" id="customFile" (change)="selectFile($event)" required placeholder="Upload Files">
+                <input type="file" formControlName="uploadFiles" class="form-control" id="customFile" (change)="selectFile($event)" required placeholder="Upload Files">
                 <button class="btn btn-primary" [disabled]="!selectedFiles || admincheck || status" (click)="upload()">Save
           File</button>
             </div>
@@ -38,5 +38,6 @@
                 <button type="submit" class="btn btn-primary" (click)="cancel()">Cancel</button>
             </div>
         </div>
+
     </form>
 </div>
