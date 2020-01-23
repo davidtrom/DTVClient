@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators, ControlValueAccessor } from '@angular/forms';
 import { Router } from '@angular/router';
 import { WorkOrder } from 'src/app/models/WorkOrder';
 import { UserService } from 'src/app/services/user.service';
@@ -12,21 +12,17 @@ import { apiUrl } from 'src/app/services/user.service';
   templateUrl: './report-a-concern.component.html',
   styleUrls: ['./report-a-concern.component.css']
 })
-export class ReportAConcernComponent implements OnInit {
+export class ReportAConcernComponent implements OnInit, ControlValueAccessor {
 
   title: string = "Report A Concern | Downtown Wilmington";
   createWorkOrderForm: FormGroup;
   workOrder: WorkOrder;
   newReportFormIsCollapsed: boolean = true;
-  selectedFiles: FileList;
-  selectedFileNames: string[];
-  currentFileUpload: File;
-  progress: { percentage: number } = { percentage: 0 };
-  selectedFile = null;
-  changeImage = false;
-  file: string;
-  awsEndpointUrl = "https://dtv-db.s3.amazonaws.com/";
+  public awsEndpointUrl = "https://dtv-db.s3.amazonaws.com/";
   deleteFileEndpointUrl = apiUrl + "/deleteFile";
+  workOrderFiles: string[] = [];
+  workOrderFilePathUrls: string[] = [];
+  
 
   constructor(private workOrderService: WorkOrderService, private router: Router, private http: HttpClient) {
     this.createWorkOrderForm = this.createFormGroup();
@@ -41,9 +37,11 @@ export class ReportAConcernComponent implements OnInit {
       lastName: new FormControl('', [Validators.required, Validators.pattern('^[a-zA-Z]+$')]),
       address: new FormControl('', [Validators.required]),
       description: new FormControl('', [Validators.required]),
-      uploadFiles: new FormControl('')
+      submittedFiles: new FormControl(null)
     });
   }
+
+  
 
   get firstName() {
     return this.createWorkOrderForm.get('firstName');
@@ -61,76 +59,106 @@ export class ReportAConcernComponent implements OnInit {
     return this.createWorkOrderForm.get('description');
   }
 
-  onSubmit() {
-
-    console.log("inside submit")
-    let workOrder: WorkOrder = new WorkOrder(
-      this.createWorkOrderForm.controls.firstName.value,
-      this.createWorkOrderForm.controls.lastName.value,
-      this.createWorkOrderForm.controls.description.value,
-      this.createWorkOrderForm.controls.address.value,
-      this.workOrder.selectedFileNames = this.getSelectedFileNames()
-    )
-    console.log(workOrder);
-    this.workOrderService.addReport(workOrder)
-      .subscribe(data => { console.log("inside subscribe", data); this.workOrder = data });
-    this.createWorkOrderForm.reset();
-    this.newReportFormIsCollapsed = true;
-    //this.router.navigate(['/register']);
+  getSubmittedFiles(): string[] {
+    console.log(this.submittedFiles);
+    for (var i = 0; i < e.target.files.length; i++) {
+      this.workOrderFiles.push(this.createWorkOrderForm.files[i];
+    } return this.workOrderFiles;
   }
 
-  cancel() {
-    event.preventDefault();
-    this.newReportFormIsCollapsed = true;
-  }
+  addFilePathUrl(): string[] {
+    console.log(e.target.files);
+    for (var i = 0; i < e.target.files.length; i++) {
+      this.workOrderFiles.push(e.target.files[i].name);
+    }
+  } return
+
+// }
 
 
-  displayReportForm() {
-    this.newReportFormIsCollapsed = !this.newReportFormIsCollapsed;
-  }
+
+
+onSubmit() {
+
+  console.log("inside submit")
+  let workOrder: WorkOrder = new WorkOrder(
+    this.createWorkOrderForm.controls.firstName.value,
+    this.createWorkOrderForm.controls.lastName.value,
+    this.createWorkOrderForm.controls.description.value,
+    this.createWorkOrderForm.controls.address.value,
+    this.createWorkOrderForm.controls.submittedFiles.value
+  )
+
+  console.log(workOrder);
+  this.workOrderService.addReport(workOrder)
+    .subscribe(data => { console.log("inside subscribe", data); this.workOrder = data });
+    this.workOrderService.uploadFiles()
+  this.createWorkOrderForm.reset();
+  this.newReportFormIsCollapsed = true;
+  //this.router.navigate(['/register']);
+}
+
+cancel() {
+  event.preventDefault();
+  this.newReportFormIsCollapsed = true;
+}
+
+
+displayReportForm() {
+  this.newReportFormIsCollapsed = !this.newReportFormIsCollapsed;
+}
 
 
   // Upload Work Order File Methods:
 
-  viewFile() {
-    window.open(this.awsEndpointUrl + this.file);
-  }
+  // viewFile() {
+  //   window.open(this.awsEndpointUrl + this.file);
+  // }
 
 
-  deleteFile() {
-    this.http.post<string>(this.deleteFileEndpointUrl, this.file).subscribe(
-      res => {
-        this.file = res;
-      }
-    );
-  }
+  // deleteFile() {
+  //   this.http.post<string>(this.deleteFileEndpointUrl, this.file).subscribe(
+  //     res => {
+  //       this.file = res;
+  //     }
+  //   );
+  // }
 
-  change(event) {
-    this.changeImage = true;
-  }
+  // change(event) {
+  //   this.changeImage = true;
+  // }
 
-  changedImage(event) {
-    this.selectedFile = event.target.files[0];
-  }
+  // changedImage(event) {
+  //   this.selectedFile = event.target.files[0];
+  // }
 
-  upload() {
-    this.progress.percentage = 0;
-    this.currentFileUpload = this.selectedFiles.item(0);
-    this.getSelectedFileNames();
-    this.workOrderService.pushFileToStorage(this.currentFileUpload).subscribe(event => {
-      // this.selectedFiles = undefined;
-    ;});
-  }
-  selectFile(event) {
-    this.selectedFiles = event.target.files;
+  // upload() {
+  //   this.progress.percentage = 0;
+  //   this.currentFileUpload = this.selectedFiles.item(0);
+  //   this.getSelectedFileNames();
+  //   this.workOrderService.pushFileToStorage(this.currentFileUpload).subscribe(event => {
+  //     // this.selectedFiles = undefined;
+  //   ;});
+  // }
+  // selectFile(event) {
+  //   this.selectedFiles = event.target.files;
 
-  }
+  // }
 
-  getSelectedFileNames(): string[] {
-    for (let i = 0; i < this.selectedFiles.length; i++) {
-     this.selectedFileNames.push(this.selectedFiles[i].name);
-    }
-    return this.selectedFileNames;
-  }
+  // getSelectedFileNames(): string[] {
+  //   for (let i = 0; i < this.selectedFiles.length; i++) {
+  //    this.selectedFileNames.push(this.selectedFiles[i].name);
+  //   }
+  //   return this.selectedFileNames;
+  // }
+
+  
+
+  
+
+  
+
+ 
+   
 }
 

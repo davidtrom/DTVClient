@@ -1,6 +1,6 @@
 import { Injectable, Inject } from '@angular/core';
 import { apiUrl } from './user.service';
-import { HttpHeaders, HttpClient, HttpRequest, HttpEvent } from '@angular/common/http';
+import { HttpHeaders, HttpClient, HttpRequest, HttpEvent, HttpErrorResponse } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { WorkOrder } from '../models/WorkOrder';
 import { catchError, tap } from 'rxjs/operators';
@@ -15,7 +15,8 @@ export class WorkOrderService {
   private apiUrl: string;
   addReportUrl: string = apiUrl + "/work-orders/create";
   getAllReportsUrl: string = apiUrl + "/work-orders";
-  uploadFileUrl: string = apiUrl + "/uploadFile";
+  uploadFileUrl: string = apiUrl + "/work-orders/uploadFile";
+  deleteFileUrl: string = apiUrl + "/work-orders/deleteFile";
 
 
   constructor(private http: HttpClient) { }
@@ -62,15 +63,32 @@ export class WorkOrderService {
   }
 
   // Work Order File Upload Methods:
+  
+  myFiles:string [] = [];
+  sMsg:string = '';
+  
+  uploadFiles () {
+    const frmData = new FormData();
+    
+    for (var i = 0; i < this.myFiles.length; i++) { 
+      frmData.append("fileUpload", this.myFiles[i]);
+    }
+  
+    this.http.post(this.uploadFileUrl, frmData).subscribe(
+      data => {
+        // SHOW A MESSAGE RECEIVED FROM THE WEB API.
+        this.sMsg = data as string;
+        console.log (this.sMsg);
+      },
+      (err: HttpErrorResponse) => {
+        console.log (err.message);    // Show error, if any.
+      }
+    
+    );
+    }
 
-  pushFileToStorage(file: File): Observable<HttpEvent<{}>> {
-    const data: FormData = new FormData();
-    data.append('file', file);
-    const newRequest = new HttpRequest('POST', 'http://localhost:8080/uploadFile', data, {
-      reportProgress: true,
-      responseType: 'text'
-    });
-    return this.http.request(newRequest);
-  }
+    
+
+  
 
 }
