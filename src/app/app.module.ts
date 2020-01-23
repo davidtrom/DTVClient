@@ -20,6 +20,8 @@ import { HttpInterceptorService } from './services/http-interceptor.service';
 import { LiveFeedComponent } from './adminView/components/live-feed/live-feed.component';
 import { WebsocketService } from './services/websocket.service';
 import { RequestAmbassadorDisplayComponent } from './clientView/components/request-ambassador-display/request-ambassador-display.component';
+import { ClosedRequestsDisplayComponent } from './clientView/components/closed-requests-display/closed-requests-display.component';
+import { EditAmbassadorRequestComponent } from './clientView/components/edit-ambassador-request/edit-ambassador-request.component';
 
 
 
@@ -38,6 +40,8 @@ import { RequestAmbassadorDisplayComponent } from './clientView/components/reque
     ClientHomeComponent,
     LiveFeedComponent,
     RequestAmbassadorDisplayComponent,
+    ClosedRequestsDisplayComponent,
+    EditAmbassadorRequestComponent,
   ],
   imports: [
     BrowserModule,

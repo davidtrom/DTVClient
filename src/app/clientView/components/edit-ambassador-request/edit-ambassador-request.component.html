@@ -1,0 +1,43 @@
+<p>edit-ambassador-request works!</p>
+<div class="editContainer">
+
+<form [formGroup]="updateAmbassadorRequestForm" (ngSubmit)="submit()">
+    
+    <div [ngStyle]="{'font-size': '10px', 'color': 'white'}">
+        <label for="firstName">First Name:</label>
+        <input type="text" type="firstname" formControlName = "firstName" class="form-control" id="firstName" placeholder="First Name">
+        <div *ngIf="firstName.errors?.required">*First name required</div>
+        <div *ngIf="firstName.errors?.pattern">*First name not valid</div>
+        <!--<div *ngIf="firstNameEmpty">*First name required</div>-->
+    </div>
+
+    <div [ngStyle]="{'font-size': '10px', 'color': 'white'}">
+        <label for="lastName">Last Name:</label>
+        <input type="text" type="lastname" formControlName = "lastName" class="form-control" id="lastName" placeholder="Last Name">
+        <div *ngIf="lastName.errors?.required">*Last name required</div>
+        <div *ngIf="lastName.errors?.pattern">*Last name not valid</div>
+        <!--<div *ngIf="firstNameEmpty">*Last name required</div>-->
+    </div>
+
+    <div [ngStyle]="{'font-size': '10px', 'color': 'white'}">
+        <label for="email">Email:</label>
+        <input type="text" type="email" formControlName = "email" class="form-control" id="email"  placeholder="Email">
+        <div *ngIf="email.errors?.required">*Email required</div>
+        <div *ngIf="email.errors?.pattern">*Email not valid</div>
+      <!--  <div *ngIf="emailEmpty">*Email required</div>  -->
+    </div>
+    <div *ngIf="emailAlreadyTaken" class="alert alert-danger"> 
+        *This username already exists!
+      </div>
+
+<div>
+    <button type="button" class="btn btn-primary btn-md" [disabled]="!updateUserForm.valid" (click)="submit()">Save Profile</button>
+
+    <button type="button" class="btn btn-primary btn-md" (click)="openRequests()">Open Requests</button>
+
+    <button type="button" class="btn btn-primary btn-md" (click)="closedRequests()">Closed Requests</button>
+</div>
+
+
+</form>
+</div>
