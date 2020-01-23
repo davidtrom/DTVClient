@@ -19,7 +19,6 @@ export class ReportedConcernsDisplayComponent implements OnInit {
   getWorkOrders() {
     this.workOrderService.getAllWorkOrders().subscribe(data => {this.workOrders = data});
     console.log(this.workOrders);
-    
   }
 
 }
