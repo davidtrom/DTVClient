@@ -68,7 +68,7 @@ export class WorkOrderService {
   sMsg:string = '';
   
   uploadFiles () {
-    const frmData = new FormData();
+    const frmData = new FormData(); 
     
     for (var i = 0; i < this.myFiles.length; i++) { 
       frmData.append("fileUpload", this.myFiles[i]);

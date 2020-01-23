@@ -36,24 +36,34 @@ export class ReportAConcernComponent implements OnInit {
     lastName: ['', [Validators.required, Validators.pattern('^[a-zA-Z]+$')]],
     address: ['', [Validators.required]],
     description: ['', [Validators.required]],
-    submittedFiles: this.formBuilder.array([this.createFileFormGroup()])
+    submittedFiles: this.formBuilder.array([])
   });
   }
 
+  createItem(data): FormGroup{
+    return this.formBuilder.group(data);
+  }
 
+  geSubmittedFiles(): FormArray {
+    return this.workOrderForm.get('submittedFiles') as FormArray
+  };
 
+  detectFiles(event)  {
+    let files = event.target.files;
+    if(files) {
+      for(let file of files)  {
+        let reader = new FileReader();
+        reader.onload = (e: any) => {
+          this.submittedFiles.push(this.createItem({
+            file,
+            url: e.target.result //Base64 string for preview image
 
+          }));
+        }
+      }
+    }
+  }
 
-addFile(): void {
-  this.submittedFiles = this.workOrderForm.get('submittedFiles') as FormArray;
-  this.submittedFiles.push(this.createFileFormGroup());
-}
-
-createFileFormGroup(): FormGroup {
-  return this.formBuilder.group({
-    newFile: [null]
-  });
-}
 
 
 get firstName() {
@@ -82,7 +92,7 @@ addFilePathUrl(): string[] {
 }
 
 onSubmit() {
-
+  console.log(this.workOrderForm.controls.submittedFiles.value)
   console.log("inside submit")
   let workOrder: WorkOrder = new WorkOrder(
     this.workOrderForm.controls.firstName.value,
