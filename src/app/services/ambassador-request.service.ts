@@ -40,7 +40,7 @@ export class AmbassadorRequestService {
   }
 
   close(id): Observable <AmbassadorRequest> {
-    return this.http.put<AmbassadorRequest>(this.updateStatusUrl + id, this.httpOptions)
+    return this.http.post<AmbassadorRequest>(this.updateStatusUrl + id, this.httpOptions)
       .pipe(tap(data => console.log(data)), catchError(this.handleError<AmbassadorRequest>('status: closed', null)));
   }
 
