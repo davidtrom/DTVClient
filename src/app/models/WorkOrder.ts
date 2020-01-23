@@ -28,11 +28,19 @@ import { WorkOrderStatus } from './WorkOrderStatus';
         lastName : string;
         description : string;
         location : string;
+        uploadedFile : File;
         
-        constructor(firstName:string, lastname:string, description: string, location: string){
+        constructor(
+            firstName:string,
+            lastname:string,
+            description: string,
+            location: string,
+            uploadedFile: File
+            ){
             this.firstName = firstName;
             this.lastName = lastname;
             this.description = description;
             this.location = location;
+            this.uploadedFile = this.uploadedFile;
         }
 }
