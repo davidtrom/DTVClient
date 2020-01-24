@@ -8,7 +8,8 @@ import { WorkOrder } from '../models/WorkOrder';
 
 @Injectable()
 export class WebsocketService {
-  webSocketEndPoint: string = 'ws://localhost:8080/socket';
+  webSocketEndPoint: string = 'http://localhost:8080/socket';
+  topic: string = '/topic/forms';
   stompClient: any;
   username: string;
   password: string;
@@ -20,11 +21,9 @@ export class WebsocketService {
 
 
   getStompClient() {
-    // const socket = new WebSocket(this.webSocketEndPoint);
-    // this.stompClient = Stomp.over(socket);
-    this.stompClient = Stomp.client(this.webSocketEndPoint);
+    const socket = new SockJS(this.webSocketEndPoint);
+    this.stompClient = Stomp.over(socket);
     return this.stompClient;
-
   }
 
   sendRequest(dest: String, request: AmbassadorRequest) {

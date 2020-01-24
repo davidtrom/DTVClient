@@ -4,7 +4,6 @@ import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { WorkOrder } from '../models/WorkOrder';
 import { catchError, tap } from 'rxjs/operators';
-import { WebsocketService } from './websocket.service';
 
 @Injectable({
   providedIn: 'root'
@@ -17,25 +16,16 @@ export class WorkOrderService {
   getAllReportsUrl: string = apiUrl + "/work-orders"
 
 
-
   httpOptions = {
     headers: new HttpHeaders({'Content-Type' : 'application/json'})
   }
 
-  constructor(
-    private http: HttpClient,
-    private websocket: WebsocketService
-    ) { }
+  constructor(private http: HttpClient) { }
 
-  // addReport(workOrder: WorkOrder): Observable<WorkOrder>{
-  //   console.log("inside add report", this.addReportUrl);
-  //   return this.http.post<WorkOrder>(this.addReportUrl, workOrder, this.httpOptions)
-  //     .pipe(tap(data => console.log(data)), catchError(this.handleError<WorkOrder>('add Work Order', null)));  
-    
-  // }
-  addReport(workOrder: WorkOrder){
-    console.log(workOrder);
-    this.websocket.sendWorkOrder(apiUrl +'/feed/create', workOrder);
+  addReport(workOrder: WorkOrder): Observable<WorkOrder>{
+    console.log("inside add report", this.addReportUrl);
+    return this.http.post<WorkOrder>(this.addReportUrl, workOrder, this.httpOptions)
+      .pipe(tap(data => console.log(data)), catchError(this.handleError<WorkOrder>('add Work Order', null)));  
   }
 
   
