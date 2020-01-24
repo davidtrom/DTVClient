@@ -15,7 +15,9 @@ export class AmbassadorRequestService {
   addRequestUrl: string = apiUrl + "/ambassador-requests/request";
   getAllRequestsUrl: string = apiUrl + "/ambassador-requests";
   getAllClosedRequestsUrl : string = apiUrl + "/ambassador-requests/closed"; 
+  getAllOpenRequestsUrl : string = apiUrl + "/ambassador-requests/open";
   updateStatusUrl: string = apiUrl + "/ambassador-requests/close/";
+  getRequestByIdUrl: string = apiUrl + "/ambassador-requests/show/";
 
   httpOptions = {
     headers: new HttpHeaders({'Content-Type' : 'application/json'})
@@ -39,10 +41,22 @@ export class AmbassadorRequestService {
       .pipe(tap(data => console.log(data)), catchError(this.handleError<AmbassadorRequest[]>('fething all closed requests', null)));
   }
 
+  getAllOpenRequests() : Observable <AmbassadorRequest[]>{
+    return this.http.get<AmbassadorRequest[]>(this.getAllOpenRequestsUrl, this.httpOptions)
+      .pipe(tap(data => console.log(data)), catchError(this.handleError<AmbassadorRequest[]>('fething all closed requests', null)));
+  }
+
   close(id): Observable <AmbassadorRequest> {
     return this.http.post<AmbassadorRequest>(this.updateStatusUrl + id, this.httpOptions)
       .pipe(tap(data => console.log(data)), catchError(this.handleError<AmbassadorRequest>('status: closed', null)));
   }
+
+  getRequestById(id): Observable<AmbassadorRequest>{
+    return this.http.get<AmbassadorRequest>(this.getRequestByIdUrl + id, this.httpOptions)
+      .pipe(tap(data => console.log(data)), catchError(this.handleError<AmbassadorRequest>('fetch Request', null)));
+  }
+
+
 
   /**
    * Handle Http operation that failed.

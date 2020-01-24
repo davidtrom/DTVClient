@@ -1,3 +1,5 @@
+
+
 <button type="button" class="btn btn-primary btn-lg" (click)="displayReportForm()">Report a Concern</button>
 
 <div class="container-fluid">
@@ -27,6 +29,11 @@
         <div *ngIf="description.errors?.required">*Description required</div>
       </div>
     </div>
+    <div>
+      <input type="file" id="fileUpload" class = "btn btn-primary" (change)="onFileSelected($event)">
+    <!-- <button type = "submit" class = "btn btn-primary" (click)="onUpload()">Upload</button> -->
+    </div>
+    
     <div class="form-row">
       <div class="form-group col-sm-6">
         <button type="submit" class="btn btn-primary" [disabled]="!createWorkOrderForm.valid">Send Report</button>
@@ -35,5 +42,7 @@
         <button type = "submit" class = "btn btn-primary" (click)="cancel()">Cancel</button>
       </div>
     </div>
+    
   </form>
+  
 </div>

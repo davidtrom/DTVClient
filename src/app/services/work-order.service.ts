@@ -4,6 +4,7 @@ import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { WorkOrder } from '../models/WorkOrder';
 import { catchError, tap } from 'rxjs/operators';
+import { AttachedFile} from '../models/AttachedFile';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,8 @@ export class WorkOrderService {
   @Inject(apiUrl)
   private apiUrl : string;
   addReportUrl: string = apiUrl + "/work-orders/create";
-  getAllReportsUrl: string = apiUrl + "/work-orders"
+  getAllReportsUrl: string = apiUrl + "/work-orders";
+  uploadFileUrl: string = apiUrl + "/work-orders/upload-file";
 
 
   httpOptions = {
@@ -34,6 +36,12 @@ export class WorkOrderService {
     return this.http.get<WorkOrder[]>(this.getAllReportsUrl, this.httpOptions)
       .pipe(tap(data => console.log('fetch work orders', data)),
       catchError(this.handleError<WorkOrder[]>('get Work Orders', null)));
+  }
+
+  uploadFile(fd): Observable<any>{
+    console.log("inside upload file");
+    return this.http.post(this.uploadFileUrl, fd)
+      .pipe(tap(data => console.log('uploading file', data)))
   }
 
 /**
