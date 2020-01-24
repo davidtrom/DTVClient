@@ -97,4 +97,11 @@ export class ReportAConcernComponent implements OnInit {
      this.workOrderService.uploadFile(fd)
       .subscribe(data => {console.log(data);});
   }
+
+  uploadFilePlease(){
+    const fd = new FormData();
+    fd.append('image', this.selectedFile, this.selectedFile.name);
+    
+  }
+
 }

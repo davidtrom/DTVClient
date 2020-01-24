@@ -29,6 +29,7 @@ import { WorkOrderStatus } from './WorkOrderStatus';
         description : string;
         location : string;
         fileName: string;
+        
 
         
         constructor(firstName:string, lastname:string, description: string, location: string, fileName: string){
@@ -37,5 +38,6 @@ import { WorkOrderStatus } from './WorkOrderStatus';
             this.description = description;
             this.location = location;
             this.fileName = fileName;
+            
         }
 }
