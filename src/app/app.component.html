@@ -1,4 +1,5 @@
-<app-header></app-header>
+<app-header *ngIf="!displayPreLoginHeader()"></app-header>
+<app-admin-dashboard *ngIf="displayDashboard()"></app-admin-dashboard>
 
 <router-outlet></router-outlet>
 

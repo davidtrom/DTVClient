@@ -20,7 +20,7 @@ import { HttpInterceptorService } from './services/http-interceptor.service';
 import { LiveFeedComponent } from './adminView/components/live-feed/live-feed.component';
 import { WebsocketService } from './services/websocket.service';
 import { RequestAmbassadorDisplayComponent } from './clientView/components/request-ambassador-display/request-ambassador-display.component';
-
+import { AdminDashboardComponent } from './clientView/layout/admin-dashboard/admin-dashboard.component';
 
 
 @NgModule({
@@ -38,7 +38,8 @@ import { RequestAmbassadorDisplayComponent } from './clientView/components/reque
     ClientHomeComponent,
     LiveFeedComponent,
     RequestAmbassadorDisplayComponent,
-  ],
+    AdminDashboardComponent
+    ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -49,7 +50,11 @@ import { RequestAmbassadorDisplayComponent } from './clientView/components/reque
   ],
 
   providers: [
-    UserService, WorkOrderService, WebsocketService,
+    UserService, 
+    WorkOrderService, 
+    WebsocketService, 
+    RequestAmbassadorDisplayComponent,
+    ReportedConcernsDisplayComponent,
     { provide: HTTP_INTERCEPTORS, useClass:HttpInterceptorService, multi:true }
   ],
   bootstrap: [AppComponent]
