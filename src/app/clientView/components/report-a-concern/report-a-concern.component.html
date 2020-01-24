@@ -1,49 +1,35 @@
 
 <div class="container">
-    <form #it="ngForm" (ngSubmit)="adminRegister()">
-
-        <div class="form-group">
-            <label>Username</label>
-            <input type="text" type="username" name="username" class="form-control" [(ngModel)]="adminUser.username"
-                #username="ngModel" required>
-        </div>
-            <!-- Password validator  -->
-        <div class="form-group">
-            <label>Password</label>
-            <input type="text" type="password" name="password" class="form-control" [(ngModel)]="adminUser.password"
-                #password="ngModel"
-                pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-                required>
-            <div *ngIf="password.invalid && (it.submitted || password.touched)" class="alert alert-danger">
-                <div *ngIf="password.errors.required"> Password is required. </div>
-                <div *ngIf="password.errors.pattern"> Must contain at least one number, one uppercase and lowercase
-                    letter, and at least 8 or more characters.</div>
-            </div>
-        </div>
-        <div class="form-group">
-            <label>Confirm Password</label>
-            <input type="text" type="password" name="confirmpassword" class="form-control"
-                [(ngModel)]="adminUser.confirmpassword" #confirmpassword="ngModel"  pattern= "{{ password.value }}"required>
-            <div *ngIf="confirmpassword.invalid && (it.submitted || confirmpassword.touched)"
-                class="alert alert-danger">
-                <div *ngIf="confirmpassword.errors.required"> Confirm password is required. </div>
-                <div *ngIf="confirmpassword.errors.pattern"> Password & Confirm Password does not match.</div>
-            </div>
-        </div>
-
+    <form #it="ngForm" (ngSubmit)="processForm()">
 
         <div class="form-group">
             <label>First Name</label>
-            <input type="text" type="firstName" name="firstName" class="form-control" [(ngModel)]="adminUser.firstName"
-                #firstName="ngModel" required>
+            <input type="text" name="firstName" class="form-control" [(ngModel)]="workOrder.firstName" required>
         </div>
+            <!-- Password validator  -->
         <div class="form-group">
             <label>Last Name</label>
-            <input type="text" type="lastName" name="lastName" class="form-control" [(ngModel)]="adminUser.lastName"
-                #lastName="ngModel" required>
+            <input type="text" name="lastName" class="form-control" [(ngModel)]="workOrder.lastName" required>
+           
         </div>
 
-        <button type="submit" class="btn" [disabled]="!it.form.valid">register</button>
+        <div class="form-group">
+            <label>Description</label>
+            <input type="text" name="description" class="form-control" [(ngModel)]="workOrder.description" required>
+            
+        </div>
+
+        <div class="form-group">
+            <label>Location</label>
+            <input type="text" name="location" class="form-control" [(ngModel)]="workOrder.location" required>
+        </div>
+
+        <div class="form-group">
+            <label>File Upload</label>
+            <input type="file" name="fileUpload" class="form-control" (change)="selectFile($event)" [(ngModel)]="workOrder.fileUpload" observeFiles>
+        </div>
+
+        <button type="submit" class="btn" (click)="upload()"[disabled]="!it.form.valid">Submit</button>
 
     </form>
 </div>

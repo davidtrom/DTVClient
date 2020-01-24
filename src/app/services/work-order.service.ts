@@ -1,6 +1,6 @@
 import { Injectable, Inject } from '@angular/core';
 import { apiUrl } from './user.service';
-import { HttpHeaders, HttpClient } from '@angular/common/http';
+import { HttpHeaders, HttpClient, HttpEvent, HttpRequest } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { WorkOrder } from '../models/WorkOrder';
 import { catchError, tap } from 'rxjs/operators';
@@ -24,9 +24,22 @@ export class WorkOrderService {
 
   addReport(workOrder: WorkOrder): Observable<WorkOrder>{
     console.log("inside add report", this.addReportUrl);
+
+
     return this.http.post<WorkOrder>(this.addReportUrl, workOrder, this.httpOptions)
       .pipe(tap(data => console.log(data)), catchError(this.handleError<WorkOrder>('add Work Order', null)));  
   }
+
+  pushFileToStorage(file: File): Observable<HttpEvent<{}>> {
+    const data: FormData = new FormData();
+    data.append('file', file);
+    const newRequest = new HttpRequest('POST', "http://localhost:8080/work-orders/uploadFile", data, {
+    reportProgress: true,
+    responseType: 'text'
+    });
+    return this.http.request(newRequest);
+    }
+    
 
   
   getAllWorkOrders() : Observable<WorkOrder[]>{

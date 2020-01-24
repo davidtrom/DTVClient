@@ -21,6 +21,7 @@ import { LiveFeedComponent } from './adminView/components/live-feed/live-feed.co
 import { WebsocketService } from './services/websocket.service';
 import { RequestAmbassadorDisplayComponent } from './clientView/components/request-ambassador-display/request-ambassador-display.component';
 import { AdminDashboardComponent } from './clientView/layout/admin-dashboard/admin-dashboard.component';
+import { FileInputValueAccessorDirective } from './directives/file-input-value-accessor.directive';
 
 
 @NgModule({
@@ -38,7 +39,8 @@ import { AdminDashboardComponent } from './clientView/layout/admin-dashboard/adm
     ClientHomeComponent,
     LiveFeedComponent,
     RequestAmbassadorDisplayComponent,
-    AdminDashboardComponent
+    AdminDashboardComponent,
+    FileInputValueAccessorDirective
     ],
   imports: [
     BrowserModule,
