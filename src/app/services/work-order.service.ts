@@ -29,6 +29,7 @@ export class WorkOrderService {
 
 
   addReport(workOrder: WorkOrder): Observable<WorkOrder> {
+
     console.log("inside add report", this.addReportUrl);
 
 
@@ -76,18 +77,6 @@ export class WorkOrderService {
       // Let the app keep running by returning an empty result.
       return of(result as T);
     };
-  }
-
-  // Work Order File Upload Methods:
-
-  pushFileToStorage(file: File): Observable<HttpEvent<{}>> {
-    const data: FormData = new FormData();
-    data.append('file', file);
-    const newRequest = new HttpRequest('POST', 'http://localhost:8080/uploadFile', data, {
-      reportProgress: true,
-      responseType: 'text'
-    });
-    return this.http.request(newRequest);
   }
 
 }
