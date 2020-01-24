@@ -10,3 +10,11 @@
 .form-row {
     text-align: left;
 }
+
+.container-fluid {
+    margin-top: 25px;
+}
+
+.page-label {
+    margin-bottom: 10px;
+}
