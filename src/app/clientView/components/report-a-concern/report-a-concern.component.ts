@@ -78,12 +78,21 @@ export class ReportAConcernComponent implements OnInit {
     this.newReportFormIsCollapsed = !this.newReportFormIsCollapsed;
   }
 
+  changeFileName() {
+    const dataTransfer = new ClipboardEvent('').clipboardData || new DataTransfer();
+    dataTransfer.items.add(new File(['fileUpload'], 'new-file-name'));
+    const inputElement: HTMLInputElement = document.getElementById('my-input') as HTMLInputElement
+  
+    inputElement.files = dataTransfer.files;
+  }
+
   uploadFile(event) {
-    const file = (event.target as HTMLInputElement).files[0];
-    this.workOrderForm.patchValue({
-      uploadedFile: file
-    });
-    this.workOrderForm.get('fileUpload').updateValueAndValidity()
+this.uploadFile = event.target.files[0];
+    // const file  = (event.target as HTMLInputElement).files[0];
+    // this.workOrderForm.patchValue({
+    //   fileUpload: file
+    // });
+    // this.workOrderForm.get('fileUpload').updateValueAndValidity()
   }
 }
 
