@@ -13,3 +13,13 @@ router-outlet {
 .push {
     height: 4em;
 }
+
+.Site {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+#sticky {
+    flex: 1;
+}
