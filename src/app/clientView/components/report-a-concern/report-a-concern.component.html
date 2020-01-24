@@ -1,6 +1,5 @@
-<button type="button" class="btn btn-primary btn-lg" (click)="displayReportForm()">Report a Concern</button>
-
 <div class="container-fluid">
+    <div class="page-label" style="text-align: center; font-size: 24px;"> Report Concern Form </div>
     <form *ngIf="!newReportFormIsCollapsed" [formGroup]="createWorkOrderForm" (ngSubmit)="onSubmit()">
         <div class="form-row">
             <div class="col form-group">

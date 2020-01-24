@@ -1,0 +1,19 @@
+img{
+    height: auto;
+    width: 250px;
+    padding-top: 16px;
+    
+}
+
+nav{
+    width: 100%;
+    padding-left: 16px;
+    padding-right: 10px;
+    overflow: hidden;
+    background-color: #0aa59d;
+
+}
+li{
+    text-align: center;
+    color: white;
+}

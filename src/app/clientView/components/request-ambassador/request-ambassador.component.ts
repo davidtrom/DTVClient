@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./request-ambassador.component.css']
 })
 export class RequestAmbassadorComponent implements OnInit {
-  newRequestFormIsCollapsed: boolean = true;
+  newRequestFormIsCollapsed: boolean = false;
   createAmbassadorRequestForm: FormGroup;
   ambassadorRequest: AmbassadorRequest;
 
@@ -67,10 +67,10 @@ export class RequestAmbassadorComponent implements OnInit {
     this.newRequestFormIsCollapsed = true;
   }
 
-  displayRequestForm() {
+  /*displayRequestForm() {
     this.newRequestFormIsCollapsed = !this.newRequestFormIsCollapsed;
   }
-
+*/
   cancel() {
     event.preventDefault();
     this.newRequestFormIsCollapsed = true;

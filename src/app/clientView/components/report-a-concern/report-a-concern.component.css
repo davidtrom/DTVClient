@@ -11,6 +11,11 @@
     text-align: left;
 }
 
-.container {
+.container-fluid {
+    margin-top: 20px;
     margin-bottom: 125px;
+}
+
+.page-label {
+    margin-bottom: 10px;
 }

@@ -1,3 +1,22 @@
-.container {
-    padding-bottom: 16rem;
-}
+    .main-container {
+        padding-bottom: 16rem;
+    }
+    
+    .container {
+        width: 100%;
+    }
+    
+    button {
+        text-align: center;
+        color: white;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        overflow: hidden;
+        background-color: #0aa59d;
+        border-color: #0aa;
+        height: 25px;
+    }
+    
+    ul {
+        align-content: center;
+    }

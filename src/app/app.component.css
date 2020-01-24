@@ -1,0 +1,15 @@
+router-outlet {
+    padding-bottom: 16rem;
+}
+
+.wrapper {
+    min-height: 100%;
+    height: auto;
+    height: 100%;
+    margin: 0 auto -4em;
+}
+
+.footer,
+.push {
+    height: 4em;
+}

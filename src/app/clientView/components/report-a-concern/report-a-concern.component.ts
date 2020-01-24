@@ -17,7 +17,7 @@ export class ReportAConcernComponent implements OnInit {
   title: string = "Report A Concern | Downtown Wilmington";
   createWorkOrderForm: FormGroup;
   workOrder: WorkOrder;
-  newReportFormIsCollapsed: boolean = true;
+  newReportFormIsCollapsed: boolean = false;
   selectedFiles: FileList;
   selectedFileNames: string[];
   currentFileUpload: File;
@@ -87,9 +87,9 @@ export class ReportAConcernComponent implements OnInit {
   }
 
 
-  displayReportForm() {
-    this.newReportFormIsCollapsed = !this.newReportFormIsCollapsed;
-  }
+  //displayReportForm() {
+  //  this.newReportFormIsCollapsed = !this.newReportFormIsCollapsed;
+  //}
 
 
   // Upload Work Order File Methods:
