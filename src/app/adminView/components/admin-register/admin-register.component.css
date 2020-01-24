@@ -15,3 +15,6 @@ form{
     display: inline-block;
     font-size: 16px;
   }
+  form{
+      text-align: center;
+  }
