@@ -29,6 +29,7 @@ export class WorkOrderService {
 
 
   addReport(workOrder: WorkOrder): Observable<WorkOrder> {
+
     console.log("inside add report", this.addReportUrl);
 
 
@@ -78,7 +79,9 @@ export class WorkOrderService {
     };
   }
 
+
   // Work Order File Upload Methods:
+
 
 
 

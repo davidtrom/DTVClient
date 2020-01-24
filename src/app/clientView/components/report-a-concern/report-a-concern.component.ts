@@ -22,6 +22,8 @@ export class ReportAConcernComponent implements OnInit {
 
   changeImage = false;
 
+  fileName : string;
+
   constructor(private workOrderService: WorkOrderService, private router: Router) {
 
   }
@@ -39,12 +41,17 @@ export class ReportAConcernComponent implements OnInit {
 
 
   processForm(){
+    this.upload();
+
+    this.workOrder.fileName = this.fileName;
     this.workOrderService.addReport(this.workOrder).subscribe(input => console.log(this.workOrder));
+    console.log(this.workOrder)
     
   }
 
   upload() {
     this.currentFileUpload = this.selectedFiles.item(0);
+    this.fileName = this.selectedFiles.item(0).name;
     this.workOrderService.pushFileToStorage(this.currentFileUpload).subscribe(event => {
     this.selectedFiles = undefined;
     });
