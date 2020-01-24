@@ -12,7 +12,7 @@ import { RequestAmbassadorDisplayComponent } from 'src/app/clientView/components
 export class LiveFeedComponent implements OnInit {
   workOrders : WorkOrder[];
   request : AmbassadorRequest[];
-  workorder_Destination: string = '/topic';
+  workorder_Destination: string = '/app/topic';
   stompClient = null;
   constructor(
     private webSocket : WebsocketService,
@@ -22,6 +22,22 @@ export class LiveFeedComponent implements OnInit {
   ngOnInit() {
     
   }
+
+  connect(){
+    this.stompClient = this.webSocket.getStompClient();
+    this.stompClient.connect({}, frame => {
+      this.stompClient.subscribe(this.workorder_Destination, ouput => {
+        this.workOrders.push(JSON.parse(ouput.WorkOrder));
+      });
+    });
+  }
+  disconnect(){
+    if(this.stompClient !== null){
+      this.stompClient.connect();
+    }
+    console.log("Disconnected");
+  }
+
   // connect(){
   //   this.stompClient = this.webSocket.getStompClient();
   //   this.stompClient.connect(this.webSocket.username,this.webSocket.password, frame => {
@@ -36,4 +52,5 @@ export class LiveFeedComponent implements OnInit {
   //   }
   //   console.log("Disconnected");
   // }
+
 }
