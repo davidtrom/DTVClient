@@ -6,10 +6,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./client-home.component.css']
 })
 export class ClientHomeComponent implements OnInit {
+  reportConcern:Boolean = true;
+  requestAmbassador:Boolean = false;
 
   constructor() { }
 
   ngOnInit() {
   }
 
+  reportView(){
+    this.reportConcern = true;
+    this.requestAmbassador = false;
+  }
+
+  requestView(){
+    this.reportConcern = false;
+    this.requestAmbassador = true;
+  }
 }
