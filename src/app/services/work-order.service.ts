@@ -29,7 +29,7 @@ export class WorkOrderService {
 
 
   addReport(workOrder: WorkOrder): Observable<WorkOrder> {
-    console.log("inside add report", this.addReportUrl);
+    //console.log("inside add report", this.addReportUrl);
 
 
     return this.http.post<WorkOrder>(this.addReportUrl, workOrder, this.httpOptions)
