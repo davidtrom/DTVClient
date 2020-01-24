@@ -40,7 +40,7 @@ export class WorkOrderService {
   pushFileToStorage(file: File): Observable<HttpEvent<{}>> {
     const data: FormData = new FormData();
     data.append('file', file);
-    const newRequest = new HttpRequest('POST', "http://localhost:8080/work-orders/uploadFile", data, {
+    const newRequest = new HttpRequest('POST', "http://localhost:8080/work-orders/upload-file", data, {
     reportProgress: true,
     responseType: 'text'
     });
@@ -80,14 +80,6 @@ export class WorkOrderService {
 
   // Work Order File Upload Methods:
 
-  pushFileToStorage(file: File): Observable<HttpEvent<{}>> {
-    const data: FormData = new FormData();
-    data.append('file', file);
-    const newRequest = new HttpRequest('POST', 'http://localhost:8080/uploadFile', data, {
-      reportProgress: true,
-      responseType: 'text'
-    });
-    return this.http.request(newRequest);
-  }
+
 
 }
