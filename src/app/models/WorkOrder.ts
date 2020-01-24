@@ -30,4 +30,9 @@ import { WorkOrderStatus } from './WorkOrderStatus';
         location : string;
         fileUpload : string;
         
+
+
+        
+    
+
 }

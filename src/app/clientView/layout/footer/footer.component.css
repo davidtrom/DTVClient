@@ -1,38 +1,47 @@
 #footer {
     padding-top: 0;
+    /* position: absolute; */
+    left: 0;
     position: absolute;
     bottom: 0;
     width: 100%;
-    height: 16rem;
+    height: 123px;
     background-color: #40504f;
 }
 
-#design-block{
+#design-block {
     width: 100%;
-    height: 2.5rem;
+    height: 10px;
     background-color: #0AA59D;
 }
 
-.flex-container{
-    padding-top: 1rem;
-    padding-bottom: 1rem;
+.flex-container {
+    padding-top: 15px;
+    padding-bottom: 5px;
     display: flex;
     justify-content: space-around;
 }
 
-img{
+img {
     height: 50px;
     width: 50px;
 }
-.container{
+
+.container {
     font-size: 12px;
     padding-top: 1rem;
 }
-#dtvWebsite{
+
+#dtvWebsite {
     text-decoration: none;
     color: white;
 }
 
-#dtvWebsite:after{
+#dtvWebsite:after {
     text-decoration: none;
+}
+
+.clear {
+    clear: both;
+    height: 125px;
 }
