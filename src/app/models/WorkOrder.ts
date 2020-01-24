@@ -29,8 +29,7 @@ import { WorkOrderStatus } from './WorkOrderStatus';
         description : string;
         location : string;
         fileName: string;
-        
-
+    
         
         constructor(firstName:string, lastname:string, description: string, location: string, fileName: string){
             this.firstName = firstName;
