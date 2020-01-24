@@ -4,7 +4,6 @@ import { Router } from '@angular/router';
 import { WorkOrder } from 'src/app/models/WorkOrder';
 import { UserService } from 'src/app/services/user.service';
 import { WorkOrderService } from 'src/app/services/work-order.service';
-import { WebsocketService } from 'src/app/services/websocket.service';
 
 @Component({
   selector: 'app-report-a-concern',
@@ -18,28 +17,11 @@ export class ReportAConcernComponent implements OnInit {
   workOrder: WorkOrder;
   newReportFormIsCollapsed: boolean = true;
 
-  stompClient = null;
-  workorder_Destination: string = '/app/topic';
-
-  constructor(
-    private workOrderService : WorkOrderService, 
-    private router : Router,
-    private webSocket: WebsocketService
-    ) { 
+  constructor(private workOrderService : WorkOrderService, private router : Router) { 
     this.createWorkOrderForm = this.createFormGroup();
   }
 
   ngOnInit() {
-    this.stompClient = this.webSocket.getStompClient();
-    this.stompClient.connect({},{},
-       callback => {
-      console.log("Successfully connected");
-    } ,
-      errorCallBack => {
-        console.log("Error Connecting to Websocket");
-      },
-      this.workorder_Destination
-    );
   }
 
   createFormGroup() {
@@ -77,9 +59,8 @@ export class ReportAConcernComponent implements OnInit {
       this.createWorkOrderForm.controls.address.value,
     )
     console.log(workOrder);
-    // this.workOrderService.addReport(workOrder)
-    //   .subscribe(data => {console.log("inside subscribe", data); this.workOrder = data});
-    this.workOrderService
+    this.workOrderService.addReport(workOrder)
+      .subscribe(data => {console.log("inside subscribe", data); this.workOrder = data});
     this.createWorkOrderForm.reset();
     this.newReportFormIsCollapsed = true;
     //this.router.navigate(['/register']);
