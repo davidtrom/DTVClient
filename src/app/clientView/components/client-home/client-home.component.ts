@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ClientHomeComponent implements OnInit {
   reportConcern:Boolean = true;
-  requestAmbassador:Boolean = true;
+  requestAmbassador:Boolean = false;
 
   constructor() { }
 
