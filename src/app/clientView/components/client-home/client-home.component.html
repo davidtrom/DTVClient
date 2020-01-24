@@ -1,0 +1,22 @@
+<div class="container-fluid btn-group-toggle main-container" data-toggle="buttons">
+    <div class="container">
+        <ul class="nav nav-pills">
+            <li class="nav-item">
+                <button class="stuff" (click)="reportView()">Report Concern</button>
+            </li>
+            <li class="nav-item">
+                <button class="stuff" (click)="requestView()">Request Ambassador</button>
+            </li>
+        </ul>
+    </div>
+
+    <div class="container" *ngIf="reportConcern === true">
+        <app-report-a-concern></app-report-a-concern>
+    </div>
+
+
+
+    <div class="container" *ngIf="requestAmbassador === true">
+        <app-request-ambassador></app-request-ambassador>
+    </div>
+</div>

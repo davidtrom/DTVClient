@@ -26,7 +26,7 @@
             <label>Confirm Password</label>
             <input type="text" type="password" name="confirmpassword" class="form-control"
                 [(ngModel)]="adminUser.confirmpassword" #confirmpassword="ngModel"  pattern= "{{ password.value }}"required>
-            <div *ngIf=" confirmpassword.invalid && (it.submitted || confirmpassword.touched)"
+            <div *ngIf="confirmpassword.invalid && (it.submitted || confirmpassword.touched)"
                 class="alert alert-danger">
                 <div *ngIf="confirmpassword.errors.required"> Confirm password is required. </div>
                 <div *ngIf="confirmpassword.errors.pattern"> Password & Confirm Password does not match.</div>

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
+import { WebsocketService } from './websocket.service';
 
 export class User {
   constructor(public status: string) { }
@@ -18,9 +19,14 @@ export class AuthenticationService {
 
   url : String = environment.apiUrl;
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient,
+    private webSocket: WebsocketService
+    ) { }
 
   authenticate(username, password) {
+    this.webSocket.username = username;
+    this.webSocket.password = password;
     return this.http.post<any>( this.url + '/authenticate', { username, password }).pipe(map(
       userData => {
         sessionStorage.setItem('username', username);
@@ -43,5 +49,7 @@ export class AuthenticationService {
   logOut() {
     sessionStorage.removeItem('username');
     sessionStorage.removeItem('userId');
+    this.webSocket.username = null;
+    this.webSocket.password = null;
   }
 }

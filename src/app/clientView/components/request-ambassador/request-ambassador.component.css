@@ -1,9 +1,20 @@
 .btn {
-    width: 100%;
-    margin-top: 15px;
-    margin-bottom: 15px;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
     overflow: hidden;
     background-color: #0aa59d;
     border-color: #0aa59d;
+}
 
+.form-row {
+    text-align: left;
+}
+
+.container-fluid {
+    margin-top: 25px;
+}
+
+.page-label {
+    margin-bottom: 10px;
 }

@@ -1,15 +1,21 @@
-.responsive {
-    
-    width: 75px;
-    height: 75px;
-    /* height: auto; */
-  }
-#imageContainer{
-    padding-top: 75px;
-    padding-bottom: 20px;
-    width:100%;
+.btn {
     text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    overflow: hidden;
+    background-color: #0aa59d;
+    border-color: #0aa59d;
 }
-#buttonContainer{
-  padding-top: 7px;
+
+.form-row {
+    text-align: left;
+}
+
+.container-fluid {
+    margin-top: 20px;
+    margin-bottom: 125px;
+}
+
+.page-label {
+    margin-bottom: 10px;
 }
