@@ -18,12 +18,12 @@ const routes: Routes = [
   { path: 'admin/register', component: AdminRegisterComponent},
   { path: 'admin/logged-in', component: LiveFeedComponent},
   { path: 'register', component: RegisterUserComponent},
-  { path: 'reports-display', component: ReportedConcernsDisplayComponent},
+  { path: 'admin/reports-display', component: ReportedConcernsDisplayComponent},
   { path: 'create-report', component: ReportAConcernComponent},
   { path: 'request-ambassador', component: RequestAmbassadorComponent},
   { path: 'client-home', component: ClientHomeComponent},
   { path: 'ambassador-requests', component: RequestAmbassadorDisplayComponent},
-  
+
 ];
 
 @NgModule({

@@ -12,6 +12,8 @@ import { WorkOrderService } from 'src/app/services/work-order.service';
 })
 export class ReportAConcernComponent implements OnInit {
 
+
+
   title: string = "Report A Concern | Downtown Wilmington";
   workOrder: WorkOrder = new WorkOrder();
 
@@ -46,7 +48,6 @@ export class ReportAConcernComponent implements OnInit {
     this.workOrder.fileName = this.fileName;
     this.workOrderService.addReport(this.workOrder).subscribe(input => console.log(this.workOrder));
     console.log(this.workOrder)
-    
   }
 
   upload() {
