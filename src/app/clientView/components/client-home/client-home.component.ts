@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import {WorkOrderService} from '../../../services/work-order.service';
+import { apiUrl } from '../../../services/user.service';
 
 @Component({
   selector: 'app-client-home',
@@ -8,21 +9,21 @@ import {WorkOrderService} from '../../../services/work-order.service';
   styleUrls: ['./client-home.component.css']
 })
 export class ClientHomeComponent implements OnInit {
+
+
   reportConcern:Boolean = true;
   requestAmbassador:Boolean = false;
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
   }
 
   reportView(){
-    this.reportConcern = true;
-    this.requestAmbassador = false;
+    this.router.navigate(['create-report']);
   }
 
   requestView(){
-    this.reportConcern = false;
-    this.requestAmbassador = true;
+    this.router.navigate(['request-ambassador']);
   }
 }
