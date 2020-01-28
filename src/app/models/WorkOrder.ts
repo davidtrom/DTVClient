@@ -28,7 +28,7 @@ import { WorkOrderStatus } from './WorkOrderStatus';
         lastName : string;
         description : string;
         location : string;
-        fileUpload : string;
+        fileName: string;
         
 
 

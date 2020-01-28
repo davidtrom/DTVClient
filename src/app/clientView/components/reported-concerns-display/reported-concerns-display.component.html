@@ -23,7 +23,7 @@
             <td>{{ workOrder.location}}</td>
             <td>{{ workOrder.dateCreated | date: 'shortDate'}}</td>
             <td>{{ workOrder.workOrderStatus}}</td>
-            <td>{{ workOrder.dateCompleted}}</td>
+            <td>{{ workOrder.dateCompleted}}  {{workOrder.fileName}}</td>
         </tr>
       </tbody>
     </table>
