@@ -93,15 +93,14 @@ export class ReportAConcernComponent implements OnInit {
    onUpload(){
      console.log("inside on upload from HTML")
      const fd = new FormData();
-     fd.append('image', this.selectedFile, this.selectedFile.name);
-     this.workOrderService.uploadFile(fd)
+     fd.append('image', this.selectedFile.name);
+     this.workOrderService.uploadFile(this.selectedFile)
       .subscribe(data => {console.log(data);});
   }
 
   uploadFilePlease(){
     const fd = new FormData();
     fd.append('image', this.selectedFile, this.selectedFile.name);
-    
   }
 
 }
