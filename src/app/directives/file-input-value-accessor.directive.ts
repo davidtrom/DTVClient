@@ -1,17 +1,17 @@
 import { Directive } from '@angular/core';
-import { ControlValueAccessor } from "@angular/forms";
-import { ElementRef } from "@angular/core";
-import { NG_VALUE_ACCESSOR } from "@angular/forms";
+import { ControlValueAccessor } from '@angular/forms';
+import { ElementRef } from '@angular/core';
+import { NG_VALUE_ACCESSOR } from '@angular/forms';
 
-let noop = () => {
+const noop = () => {
 
 };
 
 @Directive({
-  selector: "input[type=file][ngModel][observeFiles]",
+  selector: 'input[type=file][ngModel][observeFiles]',
   host: {
-    "(blur)": "onTouchedCallback()",
-    "(change)": "handleChange($event.target.files )"
+    '(blur)': 'onTouchedCallback()',
+    '(change)': 'handleChange($event.target.files )'
   },
 
   providers: [
@@ -24,9 +24,9 @@ let noop = () => {
 })
 export class FileInputValueAccessorDirective implements ControlValueAccessor {
 
-  private elementRef: ElementRef;
-  private onChangeCallback: Function;
-  private onTouchedCallback: Function;
+  elementRef: ElementRef;
+  onChangeCallback: Function;
+  onTouchedCallback: Function;
 
   constructor(elementRef: ElementRef) {
     this.elementRef = elementRef;
@@ -81,8 +81,8 @@ export class FileInputValueAccessorDirective implements ControlValueAccessor {
       // any attempt to push a non-FileList instance into the input.
       if (console && console.warn && console.log) {
 
-        console.warn("Ignoring attempt to assign non-FileList to input[type=file].");
-        console.log("Value:", value);
+        console.warn('Ignoring attempt to assign non-FileList to input[type=file].')
+        console.log('Value:', value);
 
       }
 
