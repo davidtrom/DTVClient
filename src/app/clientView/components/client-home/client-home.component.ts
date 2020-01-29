@@ -11,8 +11,7 @@ import { apiUrl } from '../../../services/user.service';
 export class ClientHomeComponent implements OnInit {
 
 
-  reportConcern:Boolean = true;
-  requestAmbassador:Boolean = false;
+
 
   constructor(private router: Router) { }
 
