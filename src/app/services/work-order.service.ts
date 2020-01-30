@@ -1,5 +1,6 @@
 import {Injectable, Inject} from '@angular/core';
 import {apiUrl} from './user.service';
+import { environment } from '../../environments/environment';
 
 import {HttpHeaders, HttpClient, HttpEvent, HttpRequest} from '@angular/common/http';
 import {Observable, of} from 'rxjs';
@@ -12,11 +13,11 @@ import {catchError, tap} from 'rxjs/operators';
 })
 export class WorkOrderService {
 
-  @Inject(apiUrl)
-  private apiUrl: string;
-  addReportUrl: string = apiUrl + '/work-orders/create';
-  getAllReportsUrl: string = apiUrl + '/work-orders';
-  uploadFileUrl: string = apiUrl + '/uploadFile';
+  baseUrl: string = environment.apiUrl;
+  
+  addReportUrl: string = this.baseUrl + '/work-orders/create';
+  getAllReportsUrl: string = this.baseUrl + '/work-orders';
+  uploadFileUrl: string = this.baseUrl + '/uploadFile';
 
 
   constructor(private http: HttpClient) {
@@ -41,7 +42,7 @@ export class WorkOrderService {
   pushFileToStorage(file: File): Observable<HttpEvent<{}>> {
     const data: FormData = new FormData();
     data.append('file', file);
-    const newRequest = new HttpRequest('POST', 'http://localhost:8080/work-orders/upload-file', data, {
+    const newRequest = new HttpRequest('POST', this.baseUrl + '/work-orders/upload-file', data, {
       reportProgress: true,
       responseType: 'text'
     });
