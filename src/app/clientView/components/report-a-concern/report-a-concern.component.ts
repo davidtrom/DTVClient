@@ -61,6 +61,10 @@ export class ReportAConcernComponent implements OnInit {
   selectFile(event) {
     this.selectedFiles = event.target.files;
   }
+
+  cancel(){
+    this.router.navigate(['']);
+  }
 }
 
 
