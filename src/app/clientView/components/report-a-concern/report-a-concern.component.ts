@@ -47,6 +47,7 @@ export class ReportAConcernComponent implements OnInit {
     this.workOrder.fileName = this.fileName;
     this.workOrderService.addReport(this.workOrder).subscribe(input => console.log(this.workOrder));
     console.log(this.workOrder);
+    this.router.navigate(['']);
   }
 
   upload() {
