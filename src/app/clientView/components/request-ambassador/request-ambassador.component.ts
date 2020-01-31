@@ -65,6 +65,7 @@ export class RequestAmbassadorComponent implements OnInit {
       .subscribe(data => { console.log("inside subscribe", data); this.ambassadorRequest = data });
     this.createAmbassadorRequestForm.reset();
     this.newRequestFormIsCollapsed = true;
+    this.router.navigate(['']);
   }
 
   /*displayRequestForm() {
