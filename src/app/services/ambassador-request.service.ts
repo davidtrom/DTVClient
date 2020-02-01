@@ -1,19 +1,19 @@
 import { Injectable, Inject } from '@angular/core';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
-import { apiUrl } from './user.service';
 import { AmbassadorRequest } from '../models/ambassador-request';
 import { Observable, of } from 'rxjs';
 import { tap, catchError } from 'rxjs/operators';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AmbassadorRequestService {
 
-  @Inject(apiUrl)
-  private apiUrl : string;
-  addRequestUrl: string = apiUrl + "/ambassador-requests/request";
-  getAllReportsUrl: string = apiUrl + "/ambassador-requests"
+  
+  baseUrl: string = environment.apiUrl;
+  addRequestUrl: string = this.baseUrl + '/ambassador-requests/request';
+  getAllReportsUrl: string = this.baseUrl + '/ambassador-requests';
 
   httpOptions = {
     headers: new HttpHeaders({'Content-Type' : 'application/json'})
@@ -29,7 +29,7 @@ export class AmbassadorRequestService {
 
   getAllRequests() : Observable <AmbassadorRequest[]>{
     return this.http.get<AmbassadorRequest[]>(this.getAllReportsUrl, this.httpOptions)
-      .pipe(tap(data => console.log(data)), catchError(this.handleError<AmbassadorRequest[]>('fething all requests', null)));
+      .pipe(tap(data => console.log(data)), catchError(this.handleError<AmbassadorRequest[]>('fetching all requests', null)));
   }
 
   /**

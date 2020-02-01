@@ -1,5 +1,4 @@
 import {Injectable, Inject} from '@angular/core';
-import {apiUrl} from './user.service';
 import { environment } from '../../environments/environment';
 
 import {HttpHeaders, HttpClient, HttpEvent, HttpRequest} from '@angular/common/http';
