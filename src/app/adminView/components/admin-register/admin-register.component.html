@@ -16,7 +16,7 @@
             <label>Password:</label>
             <input type="text" type="password" name="password" class="form-control" [(ngModel)]="adminUser.password"
                 #password="ngModel"
-                pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#\$%\^&\*]).{8,}"
+                pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{8,}"
                 required>
             <div *ngIf="password.invalid && (it.submitted || password.touched)" class="alert alert-danger">
                 <div *ngIf="password.errors.required"> Password is required. </div>
