@@ -9,6 +9,7 @@ import { LiveFeedComponent } from './adminView/components/live-feed/live-feed.co
 import { RequestAmbassadorComponent } from './clientView/components/request-ambassador/request-ambassador.component';
 import { ClientHomeComponent } from './clientView/components/client-home/client-home.component';
 import { RequestAmbassadorDisplayComponent } from './clientView/components/request-ambassador-display/request-ambassador-display.component';
+import { AdminHomeComponent } from './adminView/components/admin-home/admin-home.component';
 
 
 
@@ -23,6 +24,7 @@ const routes: Routes = [
   { path: 'request-ambassador', component: RequestAmbassadorComponent},
   { path: 'client-home', component: ClientHomeComponent},
   { path: 'ambassador-requests', component: RequestAmbassadorDisplayComponent},
+  { path: 'admin', component: AdminHomeComponent}
 
 ];
 

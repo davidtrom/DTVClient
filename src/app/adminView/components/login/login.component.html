@@ -6,12 +6,12 @@
 
         <div class="form-group">
             <label>Username</label>
-            <input type="text" type="username" name="username" class="form-control" [(ngModel)]="login.username" 
+            <input class ="form-control" type="text" type="username" name="username" class="form-control" [(ngModel)]="login.username" 
                     #username="ngModel" required>
         </div>
         <div class="form-group">
             <label>Password</label>
-            <input type="text" type="password" name="password" class="form-control" [(ngModel)]="login.password" 
+            <input class ="form-control" type="text" type="password" name="password" class="form-control" [(ngModel)]="login.password" 
                     #password="ngModel" required>
         </div>
         <!--Checks if status is 401 meaning username or password is wrong -->
