@@ -21,4 +21,8 @@ export class AdminHomeComponent implements OnInit {
   loginView(){
     this.router.navigate(['admin/login']);
   }
+
+  cancel(){
+    this.router.navigate(['']);
+  }
  }

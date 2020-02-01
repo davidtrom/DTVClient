@@ -9,7 +9,9 @@ import { AmbassadorRequestService } from 'src/app/services/ambassador-request.se
 export class RequestAmbassadorDisplayComponent implements OnInit {
   ambassadorRequests: any[];
 
-  constructor(private ambassadorRequestService : AmbassadorRequestService) { }
+  constructor(private ambassadorRequestService : AmbassadorRequestService) {
+    this.getAmbassadorRequests();
+   }
 
   ngOnInit() {
   }

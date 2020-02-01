@@ -23,7 +23,7 @@ const routes: Routes = [
   { path: 'create-report', component: ReportAConcernComponent},
   { path: 'request-ambassador', component: RequestAmbassadorComponent},
   { path: 'client-home', component: ClientHomeComponent},
-  { path: 'ambassador-requests', component: RequestAmbassadorDisplayComponent},
+  { path: 'admin/ambassador-requests', component: RequestAmbassadorDisplayComponent},
   { path: 'admin', component: AdminHomeComponent}
 
 ];

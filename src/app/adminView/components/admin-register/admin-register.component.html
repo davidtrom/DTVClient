@@ -7,6 +7,17 @@
     <form #it="ngForm" (ngSubmit)="adminRegister()">
 
         <div class="form-group">
+            <label>First Name:</label>
+            <input type="text" type="firstName" name="firstName" class="form-control" [(ngModel)]="adminUser.firstName"
+                #firstName="ngModel" required>
+        </div>
+        <div class="form-group">
+            <label>Last Name:</label>
+            <input type="text" type="lastName" name="lastName" class="form-control" [(ngModel)]="adminUser.lastName"
+                #lastName="ngModel" required>
+        </div>
+        
+        <div class="form-group">
             <label>Username:</label>
             <input type="text" type="username" name="username" class="form-control" [(ngModel)]="adminUser.username"
                 #username="ngModel" required>
@@ -33,18 +44,6 @@
                 <div *ngIf="confirmpassword.errors.required"> Confirm password is required. </div>
                 <div *ngIf="confirmpassword.errors.pattern"> Password & Confirm Password does not match.</div>
             </div>
-        </div>
-
-
-        <div class="form-group">
-            <label>First Name:</label>
-            <input type="text" type="firstName" name="firstName" class="form-control" [(ngModel)]="adminUser.firstName"
-                #firstName="ngModel" required>
-        </div>
-        <div class="form-group">
-            <label>Last Name:</label>
-            <input type="text" type="lastName" name="lastName" class="form-control" [(ngModel)]="adminUser.lastName"
-                #lastName="ngModel" required>
         </div>
 
         <button type="submit" class="btn btn-primary" [disabled]="!it.form.valid">Register</button>
