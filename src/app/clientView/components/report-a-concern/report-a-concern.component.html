@@ -1,50 +1,40 @@
-<button type="button" class="btn btn-primary btn-lg" (click)="displayReportForm()">Report a Concern</button>
 
-<!-- <div id = "imageContainer">
-    <img src="../../../../assets/images/DTVMainStLogo.png" alt="Logo" class="responsive">
-</div> -->
-  
-  <div class="container" style="text-align:left; ">
-      <div class="box" style="margin-top: 15px; width: 370px; display:inline-block; ">
-        <form *ngIf="!newReportFormIsCollapsed" [formGroup]="createWorkOrderForm" (ngSubmit)="onSubmit()">
-    
-          <div class="form-row">
-            <div class="form-group col-md-6">
-              <label for="inputFirstName">First Name:</label>
-              <input type="text" formControlName = "firstName"  class="form-control" id="firstName" required placeholder="First">
-              <div *ngIf="firstName.errors?.pattern">First name not valid</div>
-              <div *ngIf="firstName.errors?.required">*First name required</div> 
-            </div>
-            
-            <div class="form-group col-md-6">
-              <label for="inputLastName">Last Name:</label>
-              <input type="text" formControlName = "lastName" class="form-control" id="lastName" required placeholder="Last">
-              <div *ngIf="lastName.errors?.pattern">Last name not valid</div> 
-              <div *ngIf="firstName.errors?.required">*Last name required</div>
-            </div>
-          </div>  
-          
 
-          <div class="form-group">
-            <label for="address">Location:</label>
-            <input type="text" formControlName = "address" class="form-control" id="address" required placeholder="Address:">
-            <div *ngIf="address.errors?.required">*Address required</div>
-          </div>
+<div class="container">
+    <form #it="ngForm" (ngSubmit)="processForm()">
 
-          <div>
-            <label for="textarea1">Description of your Concern:</label>    
-            <textarea class="form-control" formControlName = "description" id="description" rows="3" placeholder="Write a short description of your concern..."></textarea>
-            <div *ngIf="description.errors?.required">*Description required</div>
-          </div>
-        
+        <div class="form-group">
+            <label>First Name</label>
+            <input type="text" name="firstName" class="form-control" [(ngModel)]="workOrder.firstName" required>
+        </div>
+            <!-- Password validator  -->
+        <div class="form-group">
+            <label>Last Name</label>
+            <input type="text" name="lastName" class="form-control" [(ngModel)]="workOrder.lastName" required>
+        </div>
 
-          <div id = "buttonContainer" class="form-group col-sm-6">
-            <button type="submit" class="btn btn-primary" [disabled]="!createWorkOrderForm.valid">Send Report</button>
-          </div>
+        <div class="form-group">
+            <label>Description</label>
+            <input type="text" name="description" class="form-control" [(ngModel)]="workOrder.description" required>
+        </div>
 
-          <div id = "buttonContainer" class="form-group col-sm-6">
-            <button type="submit" class="btn btn-primary" (click)="cancel()">Cancel</button>
-          </div>
-        </form>
-      </div>
-  </div>
+        <div class="form-group">
+            <label>Location</label>
+            <input type="text" name="location" class="form-control" [(ngModel)]="workOrder.location" required>
+        </div>
+
+        <div class="form-group">
+            <label>File Upload</label>
+            <input type="file" name="fileName" class="form-control" (change)="selectFile($event)" [(ngModel)]="workOrder.fileName" observeFiles>
+        </div>
+
+        <button type="submit" class="btn" [disabled]="!it.form.valid">Submit</button>
+        <button type = "submit" class = "btn btn-primary" (click)="cancel()">Cancel</button>
+
+    </form>
+</div>
+
+
+
+
+

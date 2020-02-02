@@ -13,11 +13,16 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RequestAmbassadorComponent } from './clientView/components/request-ambassador/request-ambassador.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { UserService } from './services/user.service';
+import { WorkOrderService } from './services/work-order.service';
 import { AdminRegisterComponent } from './adminView/components/admin-register/admin-register.component';
+import { ClientHomeComponent } from './clientView/components/client-home/client-home.component';
 import { HttpInterceptorService } from './services/http-interceptor.service';
 import { LiveFeedComponent } from './adminView/components/live-feed/live-feed.component';
-
-
+import { WebsocketService } from './services/websocket.service';
+import { RequestAmbassadorDisplayComponent } from './clientView/components/request-ambassador-display/request-ambassador-display.component';
+import { AdminDashboardComponent } from './clientView/layout/admin-dashboard/admin-dashboard.component';
+import { FileInputValueAccessorDirective } from './directives/file-input-value-accessor.directive';
+import { AdminHomeComponent } from './adminView/components/admin-home/admin-home.component';
 
 
 @NgModule({
@@ -32,8 +37,13 @@ import { LiveFeedComponent } from './adminView/components/live-feed/live-feed.co
     RequestAmbassadorComponent,
     AdminRegisterComponent,
     RequestAmbassadorComponent,
+    ClientHomeComponent,
     LiveFeedComponent,
-  ],
+    RequestAmbassadorDisplayComponent,
+    AdminDashboardComponent,
+    FileInputValueAccessorDirective,
+    AdminHomeComponent
+    ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -42,8 +52,13 @@ import { LiveFeedComponent } from './adminView/components/live-feed/live-feed.co
     ReactiveFormsModule,
     FormsModule
   ],
+
   providers: [
-    UserService,
+    UserService, 
+    WorkOrderService, 
+    WebsocketService, 
+    RequestAmbassadorDisplayComponent,
+    ReportedConcernsDisplayComponent,
     { provide: HTTP_INTERCEPTORS, useClass:HttpInterceptorService, multi:true }
   ],
   bootstrap: [AppComponent]

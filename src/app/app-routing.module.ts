@@ -7,18 +7,25 @@ import { ReportAConcernComponent } from './clientView/components/report-a-concer
 import { AdminRegisterComponent } from './adminView/components/admin-register/admin-register.component';
 import { LiveFeedComponent } from './adminView/components/live-feed/live-feed.component';
 import { RequestAmbassadorComponent } from './clientView/components/request-ambassador/request-ambassador.component';
+import { ClientHomeComponent } from './clientView/components/client-home/client-home.component';
+import { RequestAmbassadorDisplayComponent } from './clientView/components/request-ambassador-display/request-ambassador-display.component';
+import { AdminHomeComponent } from './adminView/components/admin-home/admin-home.component';
 
 
 
 const routes: Routes = [
+  { path: '', component: ClientHomeComponent },
   { path: 'admin/login', component: LoginComponent},
   { path: 'admin/register', component: AdminRegisterComponent},
   { path: 'admin/logged-in', component: LiveFeedComponent},
   { path: 'register', component: RegisterUserComponent},
-  { path: 'reports-display', component: ReportedConcernsDisplayComponent},
+  { path: 'admin/reports-display', component: ReportedConcernsDisplayComponent},
   { path: 'create-report', component: ReportAConcernComponent},
-  { path: 'ambassador-request', component: RequestAmbassadorComponent},
-  
+  { path: 'request-ambassador', component: RequestAmbassadorComponent},
+  { path: 'client-home', component: ClientHomeComponent},
+  { path: 'admin/ambassador-requests', component: RequestAmbassadorDisplayComponent},
+  { path: 'admin', component: AdminHomeComponent}
+
 ];
 
 @NgModule({

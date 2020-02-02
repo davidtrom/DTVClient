@@ -3,4 +3,5 @@ export class AdminRegister {
     lastName : String;
     username : String;
     password : String;
+    confirmpassword : String;
 }
