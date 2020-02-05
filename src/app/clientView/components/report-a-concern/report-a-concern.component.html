@@ -1,13 +1,11 @@
-
-
-<div class="container">
+<div *ngIf="!success; else successful" class="container">
     <form #it="ngForm" (ngSubmit)="processForm()">
 
         <div class="form-group">
             <label>First Name</label>
             <input type="text" name="firstName" class="form-control" [(ngModel)]="workOrder.firstName" required>
         </div>
-            <!-- Password validator  -->
+        <!-- Password validator  -->
         <div class="form-group">
             <label>Last Name</label>
             <input type="text" name="lastName" class="form-control" [(ngModel)]="workOrder.lastName" required>
@@ -25,16 +23,28 @@
 
         <div class="form-group">
             <label>File Upload</label>
-            <input type="file" name="fileName" class="form-control" (change)="selectFile($event)" [(ngModel)]="workOrder.fileName" observeFiles>
+            <input type="file" name="fileName" class="form-control" (change)="selectFile($event)"
+                [(ngModel)]="workOrder.fileName" observeFiles>
         </div>
 
-        <button type="submit" class="btn" [disabled]="!it.form.valid">Submit</button>
-        <button type = "submit" class = "btn btn-primary" (click)="cancel()">Cancel</button>
-
+        <button type="submit" class="btn" [disabled]="!it.form.valid">
+            <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1" role="status"></span>
+            Submit</button>
+        <button type="submit" class="btn btn-primary" (click)="cancel()">Cancel</button>
     </form>
+
+    <div *ngIf="error" class="alert alert-dismissible alert-danger mt-3 mb-2">An error occured, please try again.</div>
+
 </div>
 
 
-
-
-
+<ng-template #successful>
+    <div *ngIf="success" class="alert alert-primary mt-3 mb-2">
+        Your concern has been reported, thank you.
+        <hr>
+        <ul>
+            <li><a class="nav-link" routerLink="/">Return home.</a></li>
+            <li><a class="nav-link" (click)="refresh()" routerLink="/create-report">Report another concern.</a></li>
+        </ul>
+    </div>
+</ng-template>

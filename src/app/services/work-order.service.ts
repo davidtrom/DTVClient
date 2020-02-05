@@ -34,7 +34,7 @@ export class WorkOrderService {
 
 
     return this.http.post<WorkOrder>(this.addReportUrl, workOrder, this.httpOptions)
-      .pipe(tap(data => console.log(data)), catchError(this.handleError<WorkOrder>('add Work Order', null)));
+      .pipe(tap(data => console.log(data)), catchError(this.handleError<WorkOrder>('add Work Order', new WorkOrder())));
   }
 
 
