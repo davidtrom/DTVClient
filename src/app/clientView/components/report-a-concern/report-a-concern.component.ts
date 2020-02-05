@@ -25,12 +25,13 @@ export class ReportAConcernComponent implements OnInit {
 
   fileName: string;
 
-  constructor(private workOrderService: WorkOrderService, private router: Router) {
+  loading = false;
+  success = false;
+  error = false;
 
-  }
+  constructor(private workOrderService: WorkOrderService, private router: Router) {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   change(event) {
     this.changeImage = true;
@@ -42,12 +43,19 @@ export class ReportAConcernComponent implements OnInit {
 
 
   processForm() {
-    this.upload();
-
+    this.loading = true;
+    if (this.selectedFiles){
+      this.upload();
+    }
+  
     this.workOrder.fileName = this.fileName;
-    this.workOrderService.addReport(this.workOrder).subscribe(input => console.log(this.workOrder));
-    console.log(this.workOrder);
-    this.router.navigate(['']);
+    this.workOrderService.addReport(this.workOrder).subscribe(input => {
+      if(!input){
+        this.success = true;
+      } else {
+        this.error = true;
+        this.loading = false;
+      }});
   }
 
   upload() {
@@ -64,6 +72,10 @@ export class ReportAConcernComponent implements OnInit {
 
   cancel(){
     this.router.navigate(['']);
+  }
+
+  refresh(){
+    location.reload();
   }
 }
 

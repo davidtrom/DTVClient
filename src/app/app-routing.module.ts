@@ -24,7 +24,10 @@ const routes: Routes = [
   { path: 'request-ambassador', component: RequestAmbassadorComponent},
   { path: 'client-home', component: ClientHomeComponent},
   { path: 'admin/ambassador-requests', component: RequestAmbassadorDisplayComponent},
-  { path: 'admin', component: AdminHomeComponent}
+  { path: 'admin', component: AdminHomeComponent},
+
+    // if no route, redirect to home
+    { path: '**', redirectTo: '' }
 
 ];
 
