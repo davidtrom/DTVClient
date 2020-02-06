@@ -25,6 +25,8 @@ import { FileInputValueAccessorDirective } from './directives/file-input-value-a
 import { AdminHomeComponent } from './adminView/components/admin-home/admin-home.component';
 import { ClosedRequestsComponent } from './closed-requests/closed-requests.component';
 import { ClosedReportsComponent } from './closed-reports/closed-reports.component';
+import { EditRequestsComponent } from './edit-requests/edit-requests.component';
+import { EditReportsComponent } from './edit-reports/edit-reports.component';
 
 
 @NgModule({
@@ -46,7 +48,9 @@ import { ClosedReportsComponent } from './closed-reports/closed-reports.componen
     FileInputValueAccessorDirective,
     AdminHomeComponent,
     ClosedRequestsComponent,
-    ClosedReportsComponent
+    ClosedReportsComponent,
+    EditRequestsComponent,
+    EditReportsComponent
     ],
   imports: [
     BrowserModule,
