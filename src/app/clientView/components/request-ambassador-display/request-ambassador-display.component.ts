@@ -21,4 +21,11 @@ export class RequestAmbassadorDisplayComponent implements OnInit {
     console.log(this.ambassadorRequests);
   }
 
+  close(id: number) {
+    this.ambassadorRequestService.close(id).subscribe(data => {this.requestToClose = data});
+    console.log(this.ambassadorRequests);
+    location.reload();
+  }
+
+
 }
