@@ -23,6 +23,8 @@ import { RequestAmbassadorDisplayComponent } from './clientView/components/reque
 import { AdminDashboardComponent } from './clientView/layout/admin-dashboard/admin-dashboard.component';
 import { FileInputValueAccessorDirective } from './directives/file-input-value-accessor.directive';
 import { AdminHomeComponent } from './adminView/components/admin-home/admin-home.component';
+import { ClosedRequestsComponent } from './closed-requests/closed-requests.component';
+import { ClosedReportsComponent } from './closed-reports/closed-reports.component';
 
 
 @NgModule({
@@ -42,7 +44,9 @@ import { AdminHomeComponent } from './adminView/components/admin-home/admin-home
     RequestAmbassadorDisplayComponent,
     AdminDashboardComponent,
     FileInputValueAccessorDirective,
-    AdminHomeComponent
+    AdminHomeComponent,
+    ClosedRequestsComponent,
+    ClosedReportsComponent
     ],
   imports: [
     BrowserModule,
