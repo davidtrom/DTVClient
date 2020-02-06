@@ -23,10 +23,10 @@ import { RequestAmbassadorDisplayComponent } from './clientView/components/reque
 import { AdminDashboardComponent } from './clientView/layout/admin-dashboard/admin-dashboard.component';
 import { FileInputValueAccessorDirective } from './directives/file-input-value-accessor.directive';
 import { AdminHomeComponent } from './adminView/components/admin-home/admin-home.component';
-import { ClosedRequestsComponent } from './closed-requests/closed-requests.component';
-import { ClosedReportsComponent } from './closed-reports/closed-reports.component';
+import { ClosedRequestsComponent } from './adminView/components/closed-requests/closed-requests.component';
+import { ClosedReportsComponent } from './adminView/components/closed-reports/closed-reports.component';
 import { EditRequestsComponent } from './edit-requests/edit-requests.component';
-import { EditReportsComponent } from './edit-reports/edit-reports.component';
+import { EditReportsComponent } from './adminView/components/edit-reports/edit-reports.component';
 
 
 @NgModule({
