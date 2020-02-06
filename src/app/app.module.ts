@@ -25,7 +25,7 @@ import { FileInputValueAccessorDirective } from './directives/file-input-value-a
 import { AdminHomeComponent } from './adminView/components/admin-home/admin-home.component';
 import { ClosedRequestsComponent } from './adminView/components/closed-requests/closed-requests.component';
 import { ClosedReportsComponent } from './adminView/components/closed-reports/closed-reports.component';
-import { EditRequestsComponent } from './edit-requests/edit-requests.component';
+import { EditRequestsComponent } from './adminView/components/edit-requests/edit-requests.component';
 import { EditReportsComponent } from './adminView/components/edit-reports/edit-reports.component';
 
 
