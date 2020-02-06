@@ -14,6 +14,10 @@ export class AmbassadorRequestService {
   baseUrl: string = environment.apiUrl;
   addRequestUrl: string = this.baseUrl + '/ambassador-requests/request';
   getAllReportsUrl: string = this.baseUrl + '/ambassador-requests';
+  getAllClosedRequestsUrl : string = this.baseUrl + "/ambassador-requests/closed"; 
+  getAllOpenRequestsUrl : string = this.baseUrl + "/ambassador-requests/open";
+  updateStatusUrl: string = this.baseUrl + "/ambassador-requests/close/";
+  getRequestByIdUrl: string = this.baseUrl + "/ambassador-requests/show/";
 
   httpOptions = {
     headers: new HttpHeaders({'Content-Type' : 'application/json'})
