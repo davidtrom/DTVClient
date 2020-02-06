@@ -8,3 +8,11 @@
     background-color: #0aa59d;
     border-color: #0aa59d;
   }
+
+  .btnInline {
+    text-align: center;
+    overflow: hidden;
+    margin-right: 8px;
+    background-color: #0aa59d;
+    border-color: #0aa59d;
+  }

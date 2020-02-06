@@ -18,7 +18,7 @@
           </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let request of ambassadorRequests">
+        <tr *ngFor="let request of closedAmbassadorRequests">
             <td>{{ request.id }}</td>
             <td>{{ request.firstName }}</td>
             <td>{{ request.lastName }}</td>
@@ -28,8 +28,13 @@
             <td>{{ request.date | date: 'shortDate'}}</td>
             <td>{{ request.ambassadorRequestStatus}}</td>
             <td>
-                <button type="button" id=button class="btn btn-primary" (click)="close(request.id)">Re-open
-                </button></td>
+                <button type="button" id=button class="btnInline btn-primary" (click)="close(request.id)">Re-open
+                </button>
+            </td>
+            <td>
+                <button type="button" id=button class="btnInline btn-primary" (click)="edit(request.id)">Edit
+                </button>
+            </td>
               
         </tr>
       </tbody>

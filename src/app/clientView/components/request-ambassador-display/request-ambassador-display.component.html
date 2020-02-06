@@ -16,7 +16,7 @@
           </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let request of ambassadorRequests">
+        <tr *ngFor="let request of openAmbassadorRequests">
             <td>{{ request.id }}</td>
             <td>{{ request.firstName }}</td>
             <td>{{ request.lastName }}</td>
@@ -30,7 +30,7 @@
                 <button type="button" id=button class="table-btn btn-primary" (click)="close(request.id)">
                 Close
                 </button>
-                <button class="table-btn btn-primary btn-md" routerLink="/admin/ambassador-requests/edit">Edit</button>
+                <button class="table-btn btn-primary btn-md" (click)="edit(request.id)">Edit</button>
                 <!-- <button class="table-btn btn-primary btn-md" routerLink="/edit-requests">Delete</button>   -->
               </div>
             </td>
