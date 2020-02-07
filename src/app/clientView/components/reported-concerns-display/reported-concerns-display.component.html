@@ -10,12 +10,11 @@
             <th>Description:</th>
             <th>Location:</th>
             <th>Date Opened:</th>
-            <th>Status:</th>
-            <th>Date Closed:</th>
+            <th>Status:</th>  
           </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let workOrder of workOrders; let i = index">
+        <tr *ngFor="let workOrder of workOrders">
             <td>{{ workOrder.id}}</td>
             <td>{{ workOrder.firstName }}</td>
             <td>{{ workOrder.lastName }}</td>
@@ -23,10 +22,21 @@
             <td>{{ workOrder.location}}</td>
             <td>{{ workOrder.dateCreated | date: 'shortDate'}}</td>
             <td>{{ workOrder.workOrderStatus}}</td>
-            <td>{{ workOrder.dateCompleted}}  {{workOrder.fileName}}</td>
+            <td>
+              <div>
+              <button type="button" id=button class="table-btn btn-primary" (click)="close(request.id)">
+              Close
+              </button>
+              <button class="table-btn btn-primary btn-md" (click)="edit(request.id)">Edit</button>
+              <!-- <button class="table-btn btn-primary btn-md" routerLink="/edit-requests">Delete</button>   -->
+              </div>
+            </td>
         </tr>
       </tbody>
     </table>
+    <div>
+      <button class="btn btn-primary btn-md" routerLink="/admin/workOrder/closed">Closed Reports</button>  
+    </div>
   </div>
 
 
